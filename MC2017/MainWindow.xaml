@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="IGFL" Height="548.84" Width="789.782" AutomationProperties.Name="IGFL">
     <Grid>
+        
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="107,163,0,0" VerticalAlignment="Top" Width="75"/>
+        <Grid HorizontalAlignment="Left" Height="100" Margin="314,140,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="188,59,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy" Content="Label" HorizontalAlignment="Left" Margin="188,59,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy1" Content="Label" HorizontalAlignment="Left" Margin="188,59,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy2" Content="Label" HorizontalAlignment="Left" Margin="188,59,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy3" Content="Label" HorizontalAlignment="Left" Margin="188,59,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
