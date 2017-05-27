@@ -10,7 +10,7 @@ namespace MC2017
     {
         public enum class_Type
         {
-            CLASS,
+            NORMAL,
             INTERFACE,
             ABSTRACT,
             UTILITY,
@@ -22,17 +22,17 @@ namespace MC2017
 
         public List<Unit_Value> val;
         public List<Unit_Method> method;
-        public List<Unit_Line> from; // i'm from!
-        public List<Unit_Line> to; // i'm to!
+        public List<LineUnit_GUI> from; // i'm from!
+        public List<LineUnit_GUI> to; // i'm to!
 
-        public Unit_Class(String name = "none", class_Type type = class_Type.CLASS)
+        public Unit_Class(String name = "none", class_Type type = class_Type.NORMAL)
         {
             this.name = name;
             this.type = type;
             val = new List<Unit_Value>();
             method = new List<Unit_Method>();
-            from = new List<Unit_Line>();
-            to = new List<Unit_Line>();
+            from = new List<LineUnit_GUI>();
+            to = new List<LineUnit_GUI>();
         }
 
         public void delete_Class()
@@ -46,19 +46,19 @@ namespace MC2017
                 s.delete_From();
             }
         }
-        public void add_Line_From(Unit_Line line_From)
+        public void add_Line_From(LineUnit_GUI line_From)
         {
             from.Add(line_From);
         }
-        public void add_Line_To(Unit_Line line_To)
+        public void add_Line_To(LineUnit_GUI line_To)
         {
             to.Add(line_To);
         }
-        public void delete_Line_From(Unit_Line line_From)
+        public void delete_Line_From(LineUnit_GUI line_From)
         {
             from.Remove(line_From);
         }
-        public void delete_Line_To(Unit_Line line_To)
+        public void delete_Line_To(LineUnit_GUI line_To)
         {
             to.Remove(line_To);
         }
