@@ -9,8 +9,8 @@
 
 
     <StackPanel x:Name="panel"  Width="200" Height="Auto" Background="Black">
-        <Label x:Name="type" Content="Stereo Type" Width="198" Background="#FF66DCFF" HorizontalContentAlignment="Center" FontSize="11" VerticalContentAlignment="Stretch" VerticalAlignment="Center" Padding="5" HorizontalAlignment="Center" Margin="0,0.5,0,0"/>
-        <Label x:Name="name" Content="Name" Height="26" Width="198" Background="#FF66DCFF" FontWeight="Bold" Padding="5" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+        <Label x:Name="label_type" Content="Stereo Type" Width="198" Background="#FF66DCFF" HorizontalContentAlignment="Center" FontSize="11" VerticalContentAlignment="Stretch" VerticalAlignment="Center" Padding="5" HorizontalAlignment="Center" Margin="0,0.5,0,0"/>
+        <Label x:Name="label_name" Content="Name" Height="26" Width="198" Background="#FF66DCFF" FontWeight="Bold" Padding="5" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
         <ScrollViewer VerticalScrollBarVisibility="Auto" Height="100" Width="198" HorizontalAlignment="Center" Margin="0,0.5,0,0">
             <ItemsControl Name="list_val" Background="#FFB4EEFF" Width="198.5">
                 <ItemsControl.ItemTemplate>

@@ -121,11 +121,11 @@ namespace MC2017
         }
         public void delete_From()
         {
-            unit.from.unit.delete_Line_From(this);
+            unit.from.delete_Line_From(this);
         }
         public void delete_To()
         {
-            unit.to.unit.delete_Line_To(this);
+            unit.to.delete_Line_To(this);
         }
     }
 }

@@ -51,7 +51,7 @@ namespace MC2017 {
         
         #line 12 "..\..\ClassUnit_GUI.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Label type;
+        internal System.Windows.Controls.Label label_type;
         
         #line default
         #line hidden
@@ -59,7 +59,7 @@ namespace MC2017 {
         
         #line 13 "..\..\ClassUnit_GUI.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Label name;
+        internal System.Windows.Controls.Label label_name;
         
         #line default
         #line hidden
@@ -114,10 +114,10 @@ namespace MC2017 {
             this.panel = ((System.Windows.Controls.StackPanel)(target));
             return;
             case 2:
-            this.type = ((System.Windows.Controls.Label)(target));
+            this.label_type = ((System.Windows.Controls.Label)(target));
             return;
             case 3:
-            this.name = ((System.Windows.Controls.Label)(target));
+            this.label_name = ((System.Windows.Controls.Label)(target));
             return;
             case 4:
             this.list_val = ((System.Windows.Controls.ItemsControl)(target));

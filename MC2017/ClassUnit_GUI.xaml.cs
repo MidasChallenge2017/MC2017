@@ -21,19 +21,39 @@ namespace MC2017
     
     public partial class ClassUnit_GUI : UserControl
     {
-        public Unit_Class unit;
+        public enum class_Type
+        {
+            NORMAL,
+            INTERFACE,
+            ABSTRACT,
+            UTILITY,
+            ENUMERATION
+        }
 
-        public ClassUnit_GUI()
+        public string name { get; set; }
+        public class_Type type { get; set; }
+
+        public List<Unit_Value> val;
+        public List<Unit_Method> method;
+        public List<LineUnit_GUI> from; // i'm from!
+        public List<LineUnit_GUI> to; // i'm to!
+
+        public ClassUnit_GUI(String _name = "none", class_Type _type = class_Type.NORMAL)
         {
             InitializeComponent();
 
-            unit = new Unit_Class();
+            name = _name;
+            type = _type;
+            val = new List<Unit_Value>();
+            method = new List<Unit_Method>();
+            from = new List<LineUnit_GUI>();
+            to = new List<LineUnit_GUI>();
 
-            list_val.ItemsSource = unit.val;
-            list_method.ItemsSource = unit.method;
+            list_val.ItemsSource = val;
+            list_method.ItemsSource = method;
 
-            type.Content = "<<" + unit.type + ">>";
-            name.Content = unit.name;
+            label_type.Content = "<<" + _type + ">>";
+            label_name.Content = _name;
 
             MouseLeftButtonDown += new MouseButtonEventHandler(mouse_click);
         }
@@ -45,5 +65,55 @@ namespace MC2017
                 MainWindow.program_state = MainWindow.state.ClassMove;
             }
         }
+
+        
+
+        public void delete_Class()
+        {
+            foreach (var s in from)
+            {
+                s.delete_To();
+            }
+            foreach (var s in to)
+            {
+                s.delete_From();
+            }
+        }
+        public void add_Line_From(LineUnit_GUI line_From)
+        {
+            from.Add(line_From);
+        }
+        public void add_Line_To(LineUnit_GUI line_To)
+        {
+            to.Add(line_To);
+        }
+        public void delete_Line_From(LineUnit_GUI line_From)
+        {
+            from.Remove(line_From);
+        }
+        public void delete_Line_To(LineUnit_GUI line_To)
+        {
+            to.Remove(line_To);
+        }
+        public void add_Unit_Value(Unit_Value val)
+        {
+            this.val.Add(val);
+        }
+        public void add_Unit_Method(Unit_Method method)
+        {
+            this.method.Add(method);
+        }
+        public void delete_Unit_Value(Unit_Value val)
+        {
+            this.val.Remove(val);
+        }
+        public void delete_Unit_Method(Unit_Method method)
+        {
+            this.method.Remove(method);
+        }
+
+
+
+
     }
 }
