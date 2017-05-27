@@ -103,7 +103,7 @@ namespace MC2017
 
                 if (p.Y + current_class.Height > canvas.Height)
                     canvas.Height += current_class.Height;
-
+                
                 program_state = state.None;
             }
             else if (program_state == state.LineFrom)
@@ -164,7 +164,7 @@ namespace MC2017
             {
 
                 ClassUnit_GUI unit = new ClassUnit_GUI();
-
+                
                 current_class = unit;
                 list_class.Add(unit);
 
@@ -223,9 +223,12 @@ namespace MC2017
                     Canvas.SetLeft(current_class, currentPosition.X);
                     Canvas.SetTop(current_class, currentPosition.Y);
 
+
                     current_class.moveAll(currentPosition);
 
                 }
+
+
             }
             else if (program_state == state.LineFrom)
             {

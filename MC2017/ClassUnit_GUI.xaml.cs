@@ -72,11 +72,6 @@ namespace MC2017
         private void mouse_up(object sender, MouseButtonEventArgs e)
         {
 
-/*
-            if (MainWindow.current_line != null) {
-                MainWindow.current_class = this;
-            }
-*/
         }
 
         private void mouse_move(object sender, MouseEventArgs e)
