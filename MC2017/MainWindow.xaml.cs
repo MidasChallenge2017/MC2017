@@ -57,7 +57,6 @@ namespace MC2017
         private void canvas_mouse_leftBtnDown(object sender, MouseButtonEventArgs e)
         {
             
-            
         }
 
         private void canvas_mouse_leftBtnUp(object sender, MouseButtonEventArgs e)
@@ -278,6 +277,11 @@ namespace MC2017
                 btn_realization.IsEnabled = true;
                 btn_association.IsEnabled = true;
             }
+        }
+        
+        public void getClass(Unit_Class unit)
+        {
+
         }
     }
 }

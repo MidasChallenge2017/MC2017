@@ -85,14 +85,28 @@ namespace MC2017
             line.Y2 = Y2;
         }
 
-        public void setFromUnit(Unit_Class from)
+        public void setFromUnit(ClassUnit_GUI from)
         {
             unit.from = from;
         }
 
-        public void setToUnit(Unit_Class to)
+        public void setToUnit(ClassUnit_GUI to)
         {
             unit.to = to;
+        }
+
+        public void delete_Line()
+        {
+            delete_From();
+            delete_To();
+        }
+        public void delete_From()
+        {
+            unit.from.unit.delete_Line_From(this);
+        }
+        public void delete_To()
+        {
+            unit.to.unit.delete_Line_To(this);
         }
     }
 }
