@@ -4,24 +4,17 @@
 winexe
 C#
 .cs
-D:\midas_Project\MC2017\obj\Debug\
+C:\Users\HyeJeong\Documents\CHJ\2017\MIDAS challenge\Test1\MC2017\MC2017\obj\Debug\
 MC2017
 none
 false
 DEBUG;TRACE
-<<<<<<< HEAD
 C:\Users\HyeJeong\Documents\CHJ\2017\MIDAS challenge\Test1\MC2017\MC2017\App.xaml
 3-1989212365
 
 15-1785083925
-=======
-D:\midas_Project\MC2017\App.xaml
-11151548125
-
-13-450788820
->>>>>>> 0cd915deff9b9e7becca48a0ab57819770f8cc0c
 13738642453
 ClassUnit_GUI.xaml;LineUnit_GUI.xaml;MainWindow.xaml;
 
-False
+True
 

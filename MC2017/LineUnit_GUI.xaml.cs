@@ -71,28 +71,61 @@ namespace MC2017
 
         public void setFromCoordinate(double X, double Y)
         {
-            X1 = X;
-            Y1 = Y;
-            line.X1 = X1;
-            line.Y1 = Y1;
+
+            double dist = Math.Sqrt(Math.Pow(X - X2, 2) + Math.Pow(Y - Y2, 2));
+
+            if (dist >= 40) {
+
+                X1 = X;
+                Y1 = Y;
+                line.X1 = X1;
+                line.Y1 = Y1;
+
+            }
+
+            this.Width = Math.Abs(X1 - X2);
+            this.Height = Math.Abs(Y1 - Y2);
+
         }
 
         public void setToCoordinate(double X, double Y)
         {
-            X2 = X;
-            Y2 = Y;
-            line.X2 = X2;
-            line.Y2 = Y2;
+            double dist = Math.Sqrt(Math.Pow(X - X1, 2) + Math.Pow(Y - Y1, 2));
+
+            if (dist >= 40)
+            {
+                X2 = X;
+                Y2 = Y;
+                line.X2 = X2;
+                line.Y2 = Y2;
+            }
+
+            this.Width = Math.Abs(X1 - X2);
+            this.Height = Math.Abs(Y1 - Y2);
         }
 
-        public void setFromUnit(Unit_Class from)
+        public void setFromUnit(ClassUnit_GUI from)
         {
             unit.from = from;
         }
 
-        public void setToUnit(Unit_Class to)
+        public void setToUnit(ClassUnit_GUI to)
         {
             unit.to = to;
+        }
+
+        public void delete_Line()
+        {
+            delete_From();
+            delete_To();
+        }
+        public void delete_From()
+        {
+            unit.from.unit.delete_Line_From(this);
+        }
+        public void delete_To()
+        {
+            unit.to.unit.delete_Line_To(this);
         }
     }
 }

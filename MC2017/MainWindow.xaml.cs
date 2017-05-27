@@ -37,8 +37,8 @@ namespace MC2017
 
         public List<ClassUnit_GUI> list_class;
         public static ClassUnit_GUI current_class;
-        
 
+        Line line;
         public MainWindow()
         {
             InitializeComponent();
@@ -49,6 +49,17 @@ namespace MC2017
             canvas.MouseLeftButtonDown += new MouseButtonEventHandler(canvas_mouse_leftBtnDown);
             canvas.MouseMove += new MouseEventHandler(canvas_mouse_move);
             canvas.MouseLeftButtonUp += new MouseButtonEventHandler(canvas_mouse_leftBtnUp);
+
+
+            line = new Line();
+            line.StrokeThickness = 4;
+            line.Stroke = System.Windows.Media.Brushes.Black;
+            line.X1 = 10;
+            line.X2 = 40;
+            line.Y1 = 70;
+            line.Y2 = 70;
+
+            canvas.Children.Add(line);
             
         }
 
@@ -112,6 +123,8 @@ namespace MC2017
                     Canvas.SetLeft(current_class, currentPosition.X);
                     Canvas.SetTop(current_class, currentPosition.Y);
 
+                    line.X2 = currentPosition.X;
+                    line.Y2 = currentPosition.Y;
 
                 }
             }
