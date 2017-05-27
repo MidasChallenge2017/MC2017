@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Unit_Class.cs" />
+    <Compile Include="Unit_Line.cs" />
+    <Compile Include="Unit_Method.cs" />
+    <Compile Include="Unit_Value.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

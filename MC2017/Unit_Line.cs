@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace wpfTest
+namespace MC2017
 {
     class Unit_Line
     {
