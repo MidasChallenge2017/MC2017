@@ -111,9 +111,5 @@ namespace MC2017
         {
             this.method.Remove(method);
         }
-
-
-
-
     }
 }

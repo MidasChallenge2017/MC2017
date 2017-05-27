@@ -132,52 +132,10 @@ namespace MC2017
             
         }
 
-
-
-
-
-
-
-        public void draw_Unit_Class(ClassUnit_GUI unit, Point p)
-        {
-            canvas.Children.Add(unit);
-
-            Canvas.SetLeft(unit, p.X);
-            Canvas.SetTop(unit, p.Y);
-
-            if (p.X + unit.Width > canvas.Width)
-            {
-                canvas.Width += unit.Width;
-            }
-
-            if (p.Y + unit.Height > canvas.Height)
-            {
-                canvas.Height += unit.Height;
-            }
-
-            program_state = state.None;
-            btn_generalization.IsEnabled = true;
-            btn_realization.IsEnabled = true;
-            btn_association.IsEnabled = true;
-            btn_dependancy.IsEnabled = true;
-        }
-
-
-
-
-
-
-
-
-
-
-
-
         private void btn_class_Click(object sender, RoutedEventArgs e)
         {
             if (program_state == state.None)
             {
-                
                 program_state = state.Class;
 
                 btn_generalization.IsEnabled = false;

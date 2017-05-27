@@ -20,9 +20,6 @@ namespace MC2017
     /// </summary>
     public partial class LineUnit_GUI : UserControl
     {
-        
-        
-
         public enum line_Type
         {
             GENERALIZATION,
@@ -35,8 +32,8 @@ namespace MC2017
         public ClassUnit_GUI to { get; set; }
         public line_Type type { get; set; }
 
-        double X1, Y1;  // from
-        double X2, Y2;  // to
+        public double X1, Y1;  // from
+        public double X2, Y2;  // to
         
 
         public LineUnit_GUI(Point p1, Point p2, ClassUnit_GUI from = null, ClassUnit_GUI to = null, line_Type type = line_Type.GENERALIZATION)
@@ -55,7 +52,6 @@ namespace MC2017
             line_setup();
 
             line.MouseMove += new MouseEventHandler(mouse_move);
-            
         }
 
         private void mouse_move(object sender, MouseEventArgs e)
@@ -114,19 +110,30 @@ namespace MC2017
             delete_From();
             delete_To();
         }
-
-
         public void delete_From()
         {
             from.delete_Line_From(this);
+            from = null;
         }
-
-
         public void delete_To()
         {
             to.delete_Line_To(this);
+            to = null;
         }
-        
-
+        public void add_Line(ClassUnit_GUI from, ClassUnit_GUI to)
+        {
+            add_From(from);
+            add_To(to);
+        }
+        public void add_From(ClassUnit_GUI from)
+        {
+            from.add_Line_From(this);
+            this.from = from;
+        }
+        public void add_To(ClassUnit_GUI to)
+        {
+            to.add_Line_To(this);
+            this.to = to;
+        }
     }
 }
