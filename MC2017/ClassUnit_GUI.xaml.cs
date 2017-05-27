@@ -21,7 +21,7 @@ namespace MC2017
     
     public partial class ClassUnit_GUI : UserControl
     {
-        Unit_Class unit;
+        public Unit_Class unit;
 
         public ClassUnit_GUI()
         {
@@ -31,6 +31,19 @@ namespace MC2017
 
             list_val.ItemsSource = unit.val;
             list_method.ItemsSource = unit.method;
+
+            type.Content = "<<" + unit.type + ">>";
+            name.Content = unit.name;
+
+            MouseLeftButtonDown += new MouseButtonEventHandler(mouse_click);
+        }
+
+        private void mouse_click(object sender, MouseButtonEventArgs e)
+        {
+            if (MainWindow.program_state == MainWindow.state.None) {
+                MainWindow.current_class = this;
+                MainWindow.program_state = MainWindow.state.ClassMove;
+            }
         }
     }
 }
