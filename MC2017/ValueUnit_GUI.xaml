@@ -5,14 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MC2017"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" Width="215" Height="45">
-    <Grid x:Name="valFormGrid" Width="215" Height="45">
-        <ComboBox x:Name="accessModifier" HorizontalAlignment="Left" VerticalAlignment="Top" Width="72"/>
-        <TextBox x:Name="type" HorizontalAlignment="Left" Height="23" Margin="77,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47"/>
-        <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="129,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85"/>
-        <RadioButton x:Name="checkStatic" Content="static" HorizontalAlignment="Left" Margin="0,27,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="checkFinal" Content="final" HorizontalAlignment="Left" Margin="56,27,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="create" Content="생성" HorizontalAlignment="Left" Margin="179,24,0,0" VerticalAlignment="Top" Width="35" Click="create_Click"/>
+             d:DesignHeight="300" d:DesignWidth="300" Width="215" Height="65">
+    <Grid x:Name="valFormGrid" Width="215" Height="65">
+        <ComboBox x:Name="accessModifier" HorizontalAlignment="Left" VerticalAlignment="Top" Width="72" Margin="0,19,0,0"/>
+        <TextBox x:Name="type" HorizontalAlignment="Left" Height="23" Margin="77,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47"/>
+        <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="129,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85"/>
+        <Button x:Name="create" Content="생성" HorizontalAlignment="Left" Margin="179,42,0,0" VerticalAlignment="Top" Width="35" Click="create_Click" Height="23"/>
+        <CheckBox x:Name="checkStatic" Content="static" HorizontalAlignment="Left" Margin="0,47,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="checkFinal" Content="final" HorizontalAlignment="Left" Margin="50,47,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </UserControl>

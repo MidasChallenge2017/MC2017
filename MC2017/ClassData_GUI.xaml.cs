@@ -40,19 +40,19 @@ namespace MC2017
             unit.name = className.Text;
             switch (classType.SelectedIndex)
             {
-                case 1:
+                case 0:
                     unit.type = ClassUnit_GUI.class_Type.NORMAL;
                     break;
-                case 2:
+                case 1:
                     unit.type = ClassUnit_GUI.class_Type.INTERFACE;
                     break;
-                case 3:
+                case 2:
                     unit.type = ClassUnit_GUI.class_Type.ABSTRACT;
                     break;
-                case 4:
+                case 3:
                     unit.type = ClassUnit_GUI.class_Type.UTILITY;
                     break;
-                case 5:
+                case 4:
                     unit.type = ClassUnit_GUI.class_Type.ENUMERATION;
                     break;
             }

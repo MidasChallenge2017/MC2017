@@ -23,11 +23,11 @@ namespace MC2017
     {
         public enum class_Type
         {
-            NORMAL = 1,
-            INTERFACE = 2,
-            ABSTRACT = 3,
-            UTILITY = 4,
-            ENUMERATION = 5
+            NORMAL,
+            INTERFACE,
+            ABSTRACT,
+            UTILITY,
+            ENUMERATION
         }
 
         public string name { get; set; }

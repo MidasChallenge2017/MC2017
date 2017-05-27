@@ -73,7 +73,8 @@ namespace MC2017
 
             if (program_state == state.ClassMove)
             {
-
+                modifyMethod.Visibility = Visibility.Visible;
+                modifyValue.Visibility = Visibility.Visible;
                 if (p.X + current_class.Width > canvas.Width)
                     canvas.Width += current_class.Width;
 
@@ -86,21 +87,29 @@ namespace MC2017
             else if (program_state == state.LineFrom)
             {
                 program_state = state.None;
+                modifyMethod.Visibility = Visibility.Hidden;
+                modifyValue.Visibility = Visibility.Hidden;
                 getClass();
             }
             else if (program_state == state.LineTo)
             {
                 program_state = state.None;
+                modifyMethod.Visibility = Visibility.Hidden;
+                modifyValue.Visibility = Visibility.Hidden;
                 getClass();
             }
             else if (program_state == state.None)
             {
                 current_class = null;
+                modifyMethod.Visibility = Visibility.Hidden;
+                modifyValue.Visibility = Visibility.Hidden;
             }
             else if (program_state == state.Class)
             {
 
                 ClassUnit_GUI unit = new ClassUnit_GUI();
+                modifyMethod.Visibility = Visibility.Visible;
+                modifyValue.Visibility = Visibility.Visible;
 
                 current_class = unit;
                 list_class.Add(unit);
@@ -298,12 +307,6 @@ namespace MC2017
             }
         }
 
-        private void classData_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            classData.Children.Clear();
-            getClass();
-        }
-
         private void saveAsPNG_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.OpenFileDialog pFileDlg = new System.Windows.Forms.OpenFileDialog();
@@ -347,6 +350,42 @@ namespace MC2017
                 encoder.Save(outStream);
             }
             surface.LayoutTransform = transform;
+        }
+
+        private void modifyValue_Click(object sender, RoutedEventArgs e)
+        {
+            classData.Children.Clear();
+            int i = 0;
+            UserControl1 valUnit = new UserControl1(current_class);
+            Label emptyLable = new Label();
+
+            emptyLable.Content = " ";
+            classData.Children.Insert(i++, valUnit);
+            classData.Children.Insert(i++, emptyLable);
+            foreach (Unit_Value t in valUnit.unit.val)
+            {
+                Label temp = new Label();
+                temp.Content = t.str_Print;
+                classData.Children.Insert(i++, temp);
+            }
+        }
+
+        private void modifyMethod_Click(object sender, RoutedEventArgs e)
+        {
+            classData.Children.Clear();
+            int i = 0;
+            MethodUnit_GUI methodUnit = new MethodUnit_GUI(current_class);
+            Label emptyLable = new Label();
+
+            emptyLable.Content = " ";
+            classData.Children.Insert(i++, methodUnit);
+            classData.Children.Insert(i++, emptyLable);
+            foreach (Unit_Method t in methodUnit.unit.method)
+            {
+                Label temp = new Label();
+                temp.Content = t.str_Print;
+                classData.Children.Insert(i++, temp);
+            }
         }
     }
 }

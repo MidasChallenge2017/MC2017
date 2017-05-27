@@ -11,7 +11,7 @@
             <MenuItem Header="File" Height="27">
                 <MenuItem Header="New" HorizontalAlignment="Left" Width="141"/>
                 <MenuItem Header="Save" HorizontalAlignment="Left" Width="141"/>
-                <MenuItem Header="Save As PNG" HorizontalAlignment="Left" Width="164" Margin="0,0,-23,0"/>
+                <MenuItem x:Name="saveAsPNG" Header="Save As PNG" HorizontalAlignment="Left" Width="164" Margin="0,0,-23,0" Click="saveAsPNG_Click"/>
                 <MenuItem Header="Load" HorizontalAlignment="Left" Width="141"/>
             </MenuItem>
             <MenuItem Header="Edit"/>
@@ -24,10 +24,12 @@
             <Button x:Name="btn_association" Content="A" HorizontalAlignment="Left" Height="30"  Width="30" Margin="0,0,5,0" Click="btn_association_Click"/>
             <Button x:Name="btn_dependancy" Content="D" HorizontalAlignment="Left" Height="30"  Width="30" Margin="0,0,5,0" Click="btn_dependancy_Click"/>
         </StackPanel>
-        <Grid HorizontalAlignment="Left" Height="599" Margin="761,60,0,0" VerticalAlignment="Top" Width="231" Background="#FFF0FCFF">
+        <Grid HorizontalAlignment="Left" Height="599" Margin="761,61,0,0" VerticalAlignment="Top" Width="231" Background="#FFF0FCFF">
             <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Height="33" Margin="27,525,0,0" VerticalAlignment="Top" Width="157"/>
             <Label x:Name="label1" Content="Label" HorizontalAlignment="Left" Height="36" Margin="27,563,0,0" VerticalAlignment="Top" Width="157"/>
-            <StackPanel x:Name="classData" HorizontalAlignment="Left" Height="520" VerticalAlignment="Top" Width="231" MouseLeftButtonUp="classData_MouseLeftButtonUp"/>
+            <StackPanel x:Name="classData" HorizontalAlignment="Left" Height="493" VerticalAlignment="Top" Width="231"/>
+            <Button x:Name="modifyValue" Content="val수정" HorizontalAlignment="Left" Margin="89,503,0,0" VerticalAlignment="Top" Width="50" Click="modifyValue_Click" Visibility="Hidden"/>
+            <Button x:Name="modifyMethod" Content="method수정" HorizontalAlignment="Left" Margin="144,503,0,0" VerticalAlignment="Top" Width="75" Click="modifyMethod_Click" Visibility="Hidden"/>
         </Grid>
 
         <ScrollViewer x:Name="scrollViewer" HorizontalAlignment="Left" Height="599" Margin="0,60,0,0" VerticalAlignment="Top" Width="761" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="#FFEAEAEA" >
