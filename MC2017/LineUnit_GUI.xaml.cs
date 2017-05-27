@@ -20,26 +20,32 @@ namespace MC2017
     /// </summary>
     public partial class LineUnit_GUI : UserControl
     {
-        public enum type {
-            Generalization,
-            Realization,
-            Association,
-            Dependancy
-        }
+        
+        
 
-        private Unit_Line unit;
+        public enum line_Type
+        {
+            GENERALIZATION,
+            REALIZATION,
+            DEPENDENCY,
+            ASSOCIATION
+        };
+
+        public ClassUnit_GUI from { get; set; }
+        public ClassUnit_GUI to { get; set; }
+        public line_Type type { get; set; }
 
         double X1, Y1;  // from
         double X2, Y2;  // to
+        
 
-        private type line_type;
-
-        public LineUnit_GUI(type t, Point p1, Point p2)
+        public LineUnit_GUI(Point p1, Point p2, ClassUnit_GUI from = null, ClassUnit_GUI to = null, line_Type type = line_Type.GENERALIZATION)
         {
             InitializeComponent();
 
-            unit = new Unit_Line();
-            line_type = t;
+            this.from = from;
+            this.to = to;
+            this.type = type;
 
             X1 = p1.X;
             Y1 = p1.Y;
@@ -65,8 +71,7 @@ namespace MC2017
             line.X2 = X2;
             line.Y1 = Y1;
             line.Y2 = Y2;
-
-            if (line_type == type.Generalization) { }
+            
         }
 
         public void setFromCoordinate(double X, double Y)
@@ -104,28 +109,24 @@ namespace MC2017
             this.Height = Math.Abs(Y1 - Y2);
         }
 
-        public void setFromUnit(ClassUnit_GUI from)
-        {
-            unit.from = from;
-        }
-
-        public void setToUnit(ClassUnit_GUI to)
-        {
-            unit.to = to;
-        }
-
         public void delete_Line()
         {
             delete_From();
             delete_To();
         }
+
+
         public void delete_From()
         {
-            unit.from.delete_Line_From(this);
+            from.delete_Line_From(this);
         }
+
+
         public void delete_To()
         {
-            unit.to.delete_Line_To(this);
+            to.delete_Line_To(this);
         }
+        
+
     }
 }

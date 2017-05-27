@@ -9,7 +9,7 @@
     <Grid>
 
         <Line x:Name="line" Stroke="#FF343434" X2="90" Y2="15" Y1="15" StrokeThickness="3" />
-        <Polygon x:Name="polygon" Points="70,0 70,30 100,15" Fill="#FF343434" Visibility="Hidden"/>
+        <Polygon x:Name="polygon" Points="70,0 100,15 70,30" Fill="#FF343434" Visibility="Hidden"/>
         <Polyline x:Name="polyline" Points="70,0 100,15 70,30" Stroke="#FF343434" StrokeThickness="3" Visibility="Hidden"/>
 
     </Grid>
