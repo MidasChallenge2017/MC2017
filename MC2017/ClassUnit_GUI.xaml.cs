@@ -16,17 +16,20 @@ using System.Windows.Shapes;
 namespace MC2017
 {
     /// <summary>
-    /// MainWindow.xaml에 대한 상호 작용 논리
+    /// ClassUnit_GUI.xaml에 대한 상호 작용 논리
     /// </summary>
-    /// commit test
-    public partial class MainWindow : Window
+    
+    public partial class ClassUnit_GUI : UserControl
     {
-        public MainWindow()
+
+
+
+
+        public ClassUnit_GUI()
         {
             InitializeComponent();
-            
-            
+
+            panel.Height = name.Height + type.Height + list_method.Height + list_value.Height;
         }
-        
     }
 }
