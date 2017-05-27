@@ -49,8 +49,7 @@ namespace MC2017
             canvas.MouseLeftButtonDown += new MouseButtonEventHandler(canvas_mouse_leftBtnDown);
             canvas.MouseMove += new MouseEventHandler(canvas_mouse_move);
             canvas.MouseLeftButtonUp += new MouseButtonEventHandler(canvas_mouse_leftBtnUp);
-
-
+            
         }
 
 
