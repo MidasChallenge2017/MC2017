@@ -63,6 +63,7 @@
       <DependentUpon>DeleteValue.xaml</DependentUpon>
     </Compile>
     <Compile Include="Draw.cs" />
+    <Compile Include="KeyBoard.cs" />
     <Compile Include="LineUnit_GUI.xaml.cs">
       <DependentUpon>LineUnit_GUI.xaml</DependentUpon>
     </Compile>

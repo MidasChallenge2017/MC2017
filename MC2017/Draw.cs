@@ -17,6 +17,7 @@ namespace MC2017
 {
     public partial class MainWindow : Window
     {
+        bool make_continue = false;
         public void draw_Unit_Line(LineUnit_GUI unit)
         {
             canvas.Children.Add(unit);
@@ -45,6 +46,37 @@ namespace MC2017
                 canvas.Height += unit.Height;
             }
 
+            if (!make_continue)
+            {
+                state_init();
+            }
+        }
+        public void class_re_draw(ClassUnit_GUI unit)
+        {
+            Point p = new Point(Canvas.GetLeft(unit), Canvas.GetTop(unit));
+            canvas.Children.Remove(unit);
+            canvas.Children.Add(unit);
+
+            Canvas.SetLeft(unit, p.X);
+            Canvas.SetTop(unit, p.Y);
+
+            if (p.X + unit.Width > canvas.Width)
+            {
+                canvas.Width += unit.Width;
+            }
+
+            if (p.Y + unit.Height > canvas.Height)
+            {
+                canvas.Height += unit.Height;
+            }
+
+            if (!make_continue)
+            {
+                state_init();
+            }
+        }
+        private void state_init()
+        {
             program_state = state.None;
             btn_class.IsEnabled = true;
             btn_generalization.IsEnabled = true;

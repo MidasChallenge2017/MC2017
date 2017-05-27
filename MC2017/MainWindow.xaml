@@ -30,6 +30,7 @@
             <StackPanel x:Name="classData" HorizontalAlignment="Left" Height="493" VerticalAlignment="Top" Width="231"/>
             <Button x:Name="modifyValue" Content="val수정" HorizontalAlignment="Left" Margin="89,503,0,0" VerticalAlignment="Top" Width="50" Click="modifyValue_Click" Visibility="Hidden"/>
             <Button x:Name="modifyMethod" Content="method수정" HorizontalAlignment="Left" Margin="144,503,0,0" VerticalAlignment="Top" Width="75" Click="modifyMethod_Click" Visibility="Hidden"/>
+            <Button x:Name="goBack" Content="뒤로" HorizontalAlignment="Left" Margin="28,503,0,0" VerticalAlignment="Top" Width="54" Click="button_Click" Visibility="Hidden"/>
         </Grid>
 
         <ScrollViewer x:Name="scrollViewer" HorizontalAlignment="Left" Height="599" Margin="0,60,0,0" VerticalAlignment="Top" Width="761" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="#FFEAEAEA" >

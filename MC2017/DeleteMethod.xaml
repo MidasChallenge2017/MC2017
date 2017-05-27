@@ -6,5 +6,9 @@
              xmlns:local="clr-namespace:MC2017"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Width="241" Height="493">
-    <ListBox x:Name="attributeList" HorizontalAlignment="Left" Height="493" VerticalAlignment="Top" Width="241" SelectionChanged="attributeList_SelectionChanged"/>
+
+    <Grid Height="411" Width="231">
+        <Label x:Name="title" Content="label" HorizontalAlignment="Left" Margin="-2,-44,0,0" VerticalAlignment="Top" Width="213"/>
+        <ListBox x:Name="attributeList" HorizontalAlignment="Left" Height="441" VerticalAlignment="Top" Width="241" SelectionChanged="attributeList_SelectionChanged" Margin="-4,-13,-6,-17"/>
+    </Grid>
 </UserControl>

@@ -25,16 +25,22 @@ namespace MC2017
         public DeleteMethod(ClassUnit_GUI unit)
         {
             InitializeComponent();
-            InitializeComponent();
             this.unit = unit;
-            foreach (Unit_Value i in unit.val)
+            foreach (Unit_Method i in unit.method)
                 attributeList.Items.Add(i.str_Print);
+            title.Content = unit.name + " class's memeber method";
         }
 
         private void attributeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            unit.delete_Unit_Method(unit.method[attributeList.SelectedIndex]);
+            int temp = attributeList.SelectedIndex;
+            attributeList.Items.Remove(unit.method[temp].str_Print);
             attributeList.Items.Refresh();
+            unit.delete_Unit_Method(unit.method[temp]);
+            
+            return;
         }
     }
 }
+
+

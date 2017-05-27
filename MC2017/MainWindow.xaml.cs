@@ -53,6 +53,9 @@ namespace MC2017
             canvas.MouseLeftButtonDown += new MouseButtonEventHandler(canvas_mouse_leftBtnDown);
             canvas.MouseMove += new MouseEventHandler(canvas_mouse_move);
             canvas.MouseLeftButtonUp += new MouseButtonEventHandler(canvas_mouse_leftBtnUp);
+
+            this.KeyDown += new KeyEventHandler(keyboard_push_event);
+            this.KeyUp += new KeyEventHandler(keyboard_up_event);
         }
         private void canvas_mouse_leftBtnDown(object sender, MouseButtonEventArgs e)
         {
@@ -125,22 +128,8 @@ namespace MC2017
             classData.Children.Insert(i++, classUnit);
             classData.Children.Insert(i++, valUnit);
 
-            /*foreach (Unit_Value t in valUnit.unit.val)
-            {
-                Label temp = new Label();
-                temp.Content = t.str_Print;
-                classData.Children.Insert(i++, temp);
-            }*/
-
             classData.Children.Insert(i++, emptyLable);
             classData.Children.Insert(i++, methodUnit);
-            
-            /*foreach (Unit_Method t in methodUnit.unit.method)
-            {
-                Label temp = new Label();
-                temp.Content = t.str_Print;
-                classData.Children.Insert(i++, temp);
-            }*/
         }
 
         private void canvas_mouse_move(object sender, MouseEventArgs e)
@@ -334,39 +323,23 @@ namespace MC2017
             DeleteValue dd = new DeleteValue(current_class);
 
             classData.Children.Add(dd);
-            /*
-            int i = 0;
-            UserControl1 valUnit = new UserControl1(current_class);
-            Label emptyLable = new Label();
-
-            emptyLable.Content = " ";
-            classData.Children.Insert(i++, valUnit);
-            classData.Children.Insert(i++, emptyLable);
-            foreach (Unit_Value t in valUnit.unit.val)
-            {
-                Label temp = new Label();
-                temp.Content = t.str_Print;
-                classData.Children.Insert(i++, temp);
-            }
-            */
+            goBack.Visibility = Visibility.Visible;
         }
 
         private void modifyMethod_Click(object sender, RoutedEventArgs e)
         {
             classData.Children.Clear();
-            int i = 0;
-            MethodUnit_GUI methodUnit = new MethodUnit_GUI(current_class);
-            Label emptyLable = new Label();
+            DeleteMethod dm = new DeleteMethod(current_class);
 
-            emptyLable.Content = " ";
-            classData.Children.Insert(i++, methodUnit);
-            classData.Children.Insert(i++, emptyLable);
-            foreach (Unit_Method t in methodUnit.unit.method)
-            {
-                Label temp = new Label();
-                temp.Content = t.str_Print;
-                classData.Children.Insert(i++, temp);
-            }
+            classData.Children.Add(dm);
+            goBack.Visibility = Visibility.Visible;
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            classData.Children.Clear();
+            getClass();
+            goBack.Visibility = Visibility.Hidden;
         }
     }
 }

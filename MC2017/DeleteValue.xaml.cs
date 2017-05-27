@@ -28,12 +28,18 @@ namespace MC2017
             this.unit = unit;
             foreach (Unit_Value i in unit.val)
                 AttributeList.Items.Add(i.str_Print);
+            title.Content = unit.name + " class's memeber valuable";
         }
-
-        private void AttributeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        
+        private void AttributeList_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            unit.delete_Unit_Value(unit.val[AttributeList.SelectedIndex]);
+            int temp = AttributeList.SelectedIndex;
+            AttributeList.Items.Remove(unit.val[temp].str_Print);
             AttributeList.Items.Refresh();
+            unit.delete_Unit_Value(unit.val[temp]);
+
+            return;
+
         }
     }
 }
