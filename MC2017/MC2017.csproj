@@ -55,11 +55,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="LineUnit_GUI.xaml.cs">
+      <DependentUpon>LineUnit_GUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Unit_Class.cs" />
     <Compile Include="Unit_Line.cs" />
     <Compile Include="Unit_Method.cs" />
     <Compile Include="Unit_Value.cs" />
     <Page Include="ClassUnit_GUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LineUnit_GUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

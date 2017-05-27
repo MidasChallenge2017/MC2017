@@ -21,24 +21,29 @@ namespace MC2017
     
     public partial class ClassUnit_GUI : UserControl
     {
+        public Unit_Class unit;
 
-        private Unit_Class unit;
-
-        public ClassUnit_GUI(Unit_Class _unit)
+        public ClassUnit_GUI()
         {
             InitializeComponent();
 
-            unit = _unit;
-            panel.Height = name.Height + type.Height + list_method.Height + list_value.Height;
+            unit = new Unit_Class();
 
+            list_val.ItemsSource = unit.val;
+            list_method.ItemsSource = unit.method;
 
-            Loaded += new RoutedEventHandler(loaded_eventHandler);
+            type.Content = "<<" + unit.type + ">>";
+            name.Content = unit.name;
 
+            MouseLeftButtonDown += new MouseButtonEventHandler(mouse_click);
         }
 
-        private void loaded_eventHandler(object sender, RoutedEventArgs e)
-        {   
+        private void mouse_click(object sender, MouseButtonEventArgs e)
+        {
+            if (MainWindow.program_state == MainWindow.state.None) {
+                MainWindow.current_class = this;
+                MainWindow.program_state = MainWindow.state.ClassMove;
+            }
         }
-
     }
 }

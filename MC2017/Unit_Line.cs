@@ -16,11 +16,11 @@ namespace MC2017
             ASSOCIATION
         };
 
-        private Unit_Class from;
-        private Unit_Class to;
-        private line_Type type;
+        public Unit_Class from { get; set; }
+        public Unit_Class to { get; set; }
+        public line_Type type { get; set; }
 
-        public Unit_Line(Unit_Class from, Unit_Class to, line_Type type)
+        public Unit_Line(Unit_Class from = null, Unit_Class to = null, line_Type type = line_Type.GENERALIZATION)
         {
             this.from = from;
             this.to = to;
@@ -29,8 +29,16 @@ namespace MC2017
 
         public void delete_Line()
         {
-            from.to.Remove(this);
-            to.from.Remove(this);
+            delete_From();
+            delete_To();
+        }
+        public void delete_From()
+        {
+            from.delete_Line_From(this);
+        }
+        public void delete_To()
+        {
+            from.delete_Line_To(this);
         }
     }
 }

@@ -15,3 +15,5 @@ C:\Users\HyeJeong\Documents\CHJ\2017\MIDAS challenge\Test1\MC2017\MC2017\obj\Deb
 C:\Users\HyeJeong\Documents\CHJ\2017\MIDAS challenge\Test1\MC2017\MC2017\obj\Debug\MC2017.pdb
 C:\Users\HyeJeong\Documents\CHJ\2017\MIDAS challenge\Test1\MC2017\MC2017\obj\Debug\ClassUnit_GUI.g.cs
 C:\Users\HyeJeong\Documents\CHJ\2017\MIDAS challenge\Test1\MC2017\MC2017\obj\Debug\ClassUnit_GUI.baml
+C:\Users\HyeJeong\Documents\CHJ\2017\MIDAS challenge\Test1\MC2017\MC2017\obj\Debug\LineUnit_GUI.g.cs
+C:\Users\HyeJeong\Documents\CHJ\2017\MIDAS challenge\Test1\MC2017\MC2017\obj\Debug\LineUnit_GUI.baml

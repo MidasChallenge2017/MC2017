@@ -22,94 +22,78 @@ namespace MC2017
     public partial class MainWindow : Window
     {
 
-        private enum state
+        public enum state
         {
             None,
             Class,
             Generaization,
             Realization,
             Association,
-            Dependancy
+            Dependancy,
+            ClassMove
         }
 
-        state button_state;
+        public static state program_state;
 
-        List<ClassUnit_GUI> list_class;
-        ClassUnit_GUI current_class;
-
-        Point prePosition;
-        Rectangle rect;
-
-        double scrollX;
-        double scrollY;
-
+        public List<ClassUnit_GUI> list_class;
+        public static ClassUnit_GUI current_class;
+        
 
         public MainWindow()
         {
             InitializeComponent();
 
             list_class = new List<ClassUnit_GUI>();
-            button_state = state.None;
+            program_state = state.None;
 
             canvas.MouseLeftButtonDown += new MouseButtonEventHandler(canvas_mouse_leftBtnDown);
             canvas.MouseMove += new MouseEventHandler(canvas_mouse_move);
             canvas.MouseLeftButtonUp += new MouseButtonEventHandler(canvas_mouse_leftBtnUp);
 
-            scrollViewer.ScrollChanged += new ScrollChangedEventHandler(scroll_changed);
+
         }
 
-        private void scroll_changed(object sender, ScrollChangedEventArgs e)
-        {
-            scrollX = scrollViewer.HorizontalOffset;
-            scrollY = scrollViewer.VerticalOffset;
-        }
+
 
         private void canvas_mouse_leftBtnDown(object sender, MouseButtonEventArgs e)
         {
-
-            if (button_state == state.Class)
-            {
-
-                canvas.CaptureMouse();
-                create_Rectangle();
-                prePosition = e.GetPosition(this);
-                prePosition.X += scrollX;
-                prePosition.Y += scrollY;
-            }
-
+            
+            
         }
 
         private void canvas_mouse_leftBtnUp(object sender, MouseButtonEventArgs e)
         {
-            
-            if (button_state == state.Class)
+            Point p = e.GetPosition(canvas);
+
+
+            if (program_state == state.ClassMove)
             {
 
-                canvas.ReleaseMouseCapture();
-                int width = (int)(rect.Width);
-                int height = (int)(rect.Height);
+                if (p.X + current_class.Width > canvas.Width)
+                    canvas.Width += current_class.Width;
 
-                Unit_Class tmp = new Unit_Class("name", Unit_Class.class_Type.CLASS);
-                ClassUnit_GUI unit = new ClassUnit_GUI(tmp);
+                if (p.Y + current_class.Height > canvas.Height)
+                    canvas.Height += current_class.Height;
+
+                program_state = state.None;
+            }
+            else if (program_state == state.None) {
+
+                current_class = null;
+            }
+            else if (program_state == state.Class)
+            {
+
+                ClassUnit_GUI unit = new ClassUnit_GUI();
 
                 current_class = unit;
                 list_class.Add(unit);
-                
-                canvas.Children.Add(unit);
 
-                Canvas.SetLeft(unit, prePosition.X);
-                Canvas.SetTop(unit, prePosition.Y);
+                draw_Unit_Class(unit, p);
 
-                canvas.Children.Remove(rect);
-                rect = null;
-
-                if (prePosition.X + unit.Width > canvas.Width) {
-                    canvas.Width += unit.Width;
-                }
-
-                if (prePosition.Y + unit.Height > canvas.Height) {
-                    canvas.Height += unit.Height;
-                }
+                label1.Content = "X : " + (p.X + unit.ActualWidth) + "  " + canvas.Width;
+                label1.Content += "\nY : " + (p.Y + unit.ActualHeight) + "  " + canvas.Height;
+                label1.Content += "\nunit.height = " + unit.Height + "\nactualHeight = " + unit.ActualHeight;
 
             }
 
@@ -117,52 +101,54 @@ namespace MC2017
 
         private void canvas_mouse_move(object sender, MouseEventArgs e)
         {
+            Point currentPosition = e.GetPosition(canvas);
+            label.Content = "( "+ currentPosition.X + " , " + currentPosition.Y + " )";
+            label1.Content = (current_class == null) ? "null" : "clicked";
 
-           if (button_state == state.Class)
-            {
 
-                Point currentPosition = e.GetPosition(this);
-                currentPosition.X += scrollX;
-                currentPosition.Y += scrollY;
+            if (program_state == state.ClassMove) {
 
-                label.Content = "" + currentPosition.Y;
+                if (e.MouseDevice.LeftButton == MouseButtonState.Pressed && current_class != null) {
 
-                if (e.MouseDevice.LeftButton == MouseButtonState.Pressed && rect != null)
-                {
+                    Canvas.SetLeft(current_class, currentPosition.X);
+                    Canvas.SetTop(current_class, currentPosition.Y);
 
-                    double x = prePosition.X + scrollX;
-                    double y = prePosition.Y + scrollY;
-                    if (currentPosition.X < x) x = currentPosition.X;
-                    if (currentPosition.Y < y) y = currentPosition.Y;
 
-                    rect.Margin = new Thickness(x, y, 0, 0);
-                    rect.Width = Math.Abs(prePosition.X - currentPosition.X);
-                    rect.Height = Math.Abs(prePosition.Y - currentPosition.Y);
                 }
             }
 
+            
         }
 
-        private void create_Rectangle()
+
+
+
+
+
+
+        public void draw_Unit_Class(ClassUnit_GUI unit, Point p)
         {
-            rect = new Rectangle();
-            rect.Stroke = new SolidColorBrush(Colors.DarkGreen);
-     
-            DoubleCollection dash = new DoubleCollection();
-            dash.Add(1);
-            rect.StrokeDashArray = dash;
-            rect.StrokeDashOffset = 0;
-            
+            canvas.Children.Add(unit);
 
-            rect.Opacity = 0.5;
-            
-            canvas.Children.Add(rect);
+            Canvas.SetLeft(unit, p.X);
+            Canvas.SetTop(unit, p.Y);
+
+            if (p.X + unit.Width > canvas.Width)
+            {
+                canvas.Width += unit.Width;
+            }
+
+            if (p.Y + unit.Height > canvas.Height)
+            {
+                canvas.Height += unit.Height;
+            }
+
+            program_state = state.None;
+            btn_generalization.IsEnabled = true;
+            btn_realization.IsEnabled = true;
+            btn_association.IsEnabled = true;
+            btn_dependancy.IsEnabled = true;
         }
-
-
-
-
-
 
 
 
@@ -177,10 +163,10 @@ namespace MC2017
 
         private void btn_class_Click(object sender, RoutedEventArgs e)
         {
-            if (button_state == state.None)
+            if (program_state == state.None)
             {
                 
-                button_state = state.Class;
+                program_state = state.Class;
 
                 btn_generalization.IsEnabled = false;
                 btn_realization.IsEnabled = false;
@@ -189,7 +175,7 @@ namespace MC2017
 
             }
             else {
-                button_state = state.None;
+                program_state = state.None;
 
                 btn_generalization.IsEnabled = true;
                 btn_realization.IsEnabled = true;
@@ -201,10 +187,10 @@ namespace MC2017
 
         private void btn_generalization_Click(object sender, RoutedEventArgs e)
         {
-            if (button_state == state.None)
+            if (program_state == state.None)
             {
 
-                button_state = state.Generaization;
+                program_state = state.Generaization;
 
                 btn_class.IsEnabled = false;
                 btn_realization.IsEnabled = false;
@@ -214,7 +200,7 @@ namespace MC2017
             }
             else
             {
-                button_state = state.None;
+                program_state = state.None;
 
                 btn_class.IsEnabled = true;
                 btn_realization.IsEnabled = true;
@@ -225,10 +211,10 @@ namespace MC2017
 
         private void btn_realization_Click(object sender, RoutedEventArgs e)
         {
-            if (button_state == state.None)
+            if (program_state == state.None)
             {
 
-                button_state = state.Realization;
+                program_state = state.Realization;
 
                 btn_class.IsEnabled = false;
                 btn_generalization.IsEnabled = false;
@@ -238,7 +224,7 @@ namespace MC2017
             }
             else
             {
-                button_state = state.None;
+                program_state = state.None;
 
                 btn_class.IsEnabled = true;
                 btn_generalization.IsEnabled = true;
@@ -249,10 +235,10 @@ namespace MC2017
 
         private void btn_association_Click(object sender, RoutedEventArgs e)
         {
-            if (button_state == state.None)
+            if (program_state == state.None)
             {
 
-                button_state = state.Association;
+                program_state = state.Association;
 
                 btn_class.IsEnabled = false;
                 btn_generalization.IsEnabled = false;
@@ -262,7 +248,7 @@ namespace MC2017
             }
             else
             {
-                button_state = state.None;
+                program_state = state.None;
 
                 btn_class.IsEnabled = true;
                 btn_generalization.IsEnabled = true;
@@ -273,10 +259,10 @@ namespace MC2017
 
         private void btn_dependancy_Click(object sender, RoutedEventArgs e)
         {
-            if (button_state == state.None)
+            if (program_state == state.None)
             {
 
-                button_state = state.Dependancy;
+                program_state = state.Dependancy;
 
                 btn_class.IsEnabled = false;
                 btn_generalization.IsEnabled = false;
@@ -286,7 +272,7 @@ namespace MC2017
             }
             else
             {
-                button_state = state.None;
+                program_state = state.None;
 
                 btn_class.IsEnabled = true;
                 btn_generalization.IsEnabled = true;
