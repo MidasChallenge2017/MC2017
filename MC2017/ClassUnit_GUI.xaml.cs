@@ -55,10 +55,13 @@ namespace MC2017
             label_type.Content = "<<" + _type + ">>";
             label_name.Content = _name;
 
-            MouseLeftButtonDown += new MouseButtonEventHandler(mouse_click);
+            MouseLeftButtonDown += new MouseButtonEventHandler(mouse_down);
+            MouseLeftButtonUp += new MouseButtonEventHandler(mouse_up);
+            MouseMove += new MouseEventHandler(mouse_move);
+            MouseLeave += new MouseEventHandler(mouse_leave);
         }
 
-        private void mouse_click(object sender, MouseButtonEventArgs e)
+        private void mouse_down(object sender, MouseButtonEventArgs e)
         {
             if (MainWindow.program_state == MainWindow.state.None) {
                 MainWindow.current_class = this;
@@ -66,7 +69,43 @@ namespace MC2017
             }
         }
 
-        
+        private void mouse_up(object sender, MouseButtonEventArgs e)
+        {
+
+/*
+            if (MainWindow.current_line != null) {
+                MainWindow.current_class = this;
+            }
+*/
+        }
+
+        private void mouse_move(object sender, MouseEventArgs e)
+        {
+
+            if (MainWindow.program_state == MainWindow.state.LineTo || MainWindow.program_state == MainWindow.state.LineFrom)
+                MainWindow.current_class = this;
+
+        }
+
+        private void mouse_leave(object sender, MouseEventArgs e)
+        {
+
+            if (MainWindow.program_state == MainWindow.state.LineTo || MainWindow.program_state == MainWindow.state.LineFrom)
+                MainWindow.current_class = null;
+
+        }
+
+        public void moveAll(Point p)
+        {
+            foreach (var s in from) {
+                s.setFromCoordinate(p.X + s.tmp_from_X, p.Y + s.tmp_from_Y);
+            }
+            foreach (var s in to)
+            {
+                s.setToCoordinate(p.X + s.tmp_to_X, p.Y + s.tmp_to_Y);
+            }
+        }
+
 
         public void delete_Class()
         {

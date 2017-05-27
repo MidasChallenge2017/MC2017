@@ -11,7 +11,7 @@
         <Rectangle x:Name="dot_from" Height="4" Stroke="#FFFF4242" StrokeThickness="3" VerticalAlignment="Top" Width="4" Margin="0,0,96,0" Visibility="Hidden"/>
         <Rectangle x:Name="dot_to" HorizontalAlignment="Left" Height="4" Stroke="#FFFF4242" StrokeThickness="3" VerticalAlignment="Top" Width="4" Visibility="Hidden"/>
         <Line x:Name="line" Stroke="#FF343434" X2="90" Y2="15" Y1="15" StrokeThickness="3" />
-        <Polygon x:Name="polygon" Points="70,0 100,15 70,30" Fill="White" Stroke="#FF343434" StrokeThickness="3"/>
+        <Polygon x:Name="polygon" Points="70,0 100,15 70,30" Fill="White" Stroke="#FF343434" StrokeThickness="3" Visibility="Hidden"/>
 
     </Grid>
 </UserControl>

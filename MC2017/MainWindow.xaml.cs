@@ -40,9 +40,7 @@ namespace MC2017
         public List<ClassUnit_GUI> list_class;
         public static ClassUnit_GUI current_class;
         public static LineUnit_GUI current_line;
-
         
-        LineUnit_GUI line;
 
         public MainWindow()
         {
@@ -61,8 +59,11 @@ namespace MC2017
 
         private void canvas_mouse_leftBtnDown(object sender, MouseButtonEventArgs e)
         {
-            
-            
+            Point p = e.GetPosition(canvas);
+
+
+
+
         }
 
         private void canvas_mouse_leftBtnUp(object sender, MouseButtonEventArgs e)
@@ -83,15 +84,56 @@ namespace MC2017
             }
             else if (program_state == state.LineFrom)
             {
+
+                if (current_class != null)
+                {
+
+                    if (current_line.from != null) current_line.from.delete_Line_From(current_line);
+
+                    current_line.from = current_class;
+                    current_class.add_Line_From(current_line);
+
+                    lineFromBoundCheck();
+                    lineToBoundCheck();
+                }
+                else
+                {
+                    if (current_line.from != null) current_line.from.delete_Line_From(current_line);
+                    current_line.from = null;
+                }
+
+                current_line = null;
+                current_class = null;
+
                 program_state = state.None;
             }
             else if (program_state == state.LineTo)
             {
+                if (current_class != null)
+                {
+
+                    if (current_line.to != null) current_line.to.delete_Line_From(current_line);
+
+                    current_line.to = current_class;
+                    current_class.add_Line_To(current_line);
+
+                    lineFromBoundCheck();
+                    lineToBoundCheck();
+                }
+                else
+                {
+                    if (current_line.to != null) current_line.to.delete_Line_From(current_line);
+                    current_line.to = null;
+                }
+
+                current_line = null;
+                current_class = null;
+
                 program_state = state.None;
             }
             else if (program_state == state.None)
             {
-
+                current_line = null;
                 current_class = null;
             }
             else if (program_state == state.Class)
@@ -105,22 +147,59 @@ namespace MC2017
                 draw_Unit_Class(unit, p);
 
             }
+            if (program_state == state.Generaization)
+            {
+
+                current_line = new LineUnit_GUI(p, new Point(p.X+100, p.Y), type: LineUnit_GUI.line_Type.GENERALIZATION);
+                canvas.Children.Add(current_line);
+                reset_btn();
+
+            }
+            else if (program_state == state.Realization)
+            {
+
+                current_line = new LineUnit_GUI(p, new Point(p.X + 100, p.Y), type: LineUnit_GUI.line_Type.REALIZATION);
+                canvas.Children.Add(current_line);
+                reset_btn();
+
+            }
+            else if (program_state == state.Association)
+            {
+
+                current_line = new LineUnit_GUI(p, new Point(p.X + 100, p.Y), type: LineUnit_GUI.line_Type.ASSOCIATION);
+                canvas.Children.Add(current_line);
+                reset_btn();
+
+            }
+            else if (program_state == state.Dependancy)
+            {
+
+                current_line = new LineUnit_GUI(p, new Point(p.X + 100, p.Y), type: LineUnit_GUI.line_Type.DEPENDENCY);
+                canvas.Children.Add(current_line);
+                reset_btn();
+
+            }
 
         }
 
         private void canvas_mouse_move(object sender, MouseEventArgs e)
         {
             Point currentPosition = e.GetPosition(canvas);
-            label.Content = "( "+ currentPosition.X + " , " + currentPosition.Y + " )";
-            label1.Content = (current_class == null) ? "null" : "clicked";
+            label.Content = "( " + currentPosition.X + " , " + currentPosition.Y + " )";
+            label1.Content = "cur_class : " + ((current_class == null) ? "null" : "focused");
+            label1.Content += "\ncur_list : " + ((current_line == null) ? "null" : "focused");
 
 
-            if (program_state == state.ClassMove) {
+            if (program_state == state.ClassMove)
+            {
 
-                if (e.MouseDevice.LeftButton == MouseButtonState.Pressed && current_class != null) {
+                if (e.MouseDevice.LeftButton == MouseButtonState.Pressed && current_class != null)
+                {
 
                     Canvas.SetLeft(current_class, currentPosition.X);
                     Canvas.SetTop(current_class, currentPosition.Y);
+
+                    current_class.moveAll(currentPosition);
 
                 }
             }
@@ -128,7 +207,7 @@ namespace MC2017
             {
                 if (e.MouseDevice.LeftButton == MouseButtonState.Pressed && current_line != null)
                 {
-                    line.setFromCoordinate(currentPosition.X, currentPosition.Y);
+                    current_line.setFromCoordinate(currentPosition.X, currentPosition.Y);
 
                 }
             }
@@ -136,8 +215,7 @@ namespace MC2017
             {
                 if (e.MouseDevice.LeftButton == MouseButtonState.Pressed && current_line != null)
                 {
-                    line.setToCoordinate(currentPosition.X, currentPosition.Y);
-
+                    current_line.setToCoordinate(currentPosition.X, currentPosition.Y);
                 }
             }
 
@@ -147,8 +225,16 @@ namespace MC2017
 
 
 
+        public void reset_btn()
+        {
+            program_state = state.None;
 
-
+            btn_class.IsEnabled = true;
+            btn_generalization.IsEnabled = true;
+            btn_realization.IsEnabled = true;
+            btn_association.IsEnabled = true;
+            btn_dependancy.IsEnabled = true;
+        }
 
         public void draw_Unit_Class(ClassUnit_GUI unit, Point p)
         {
@@ -167,31 +253,74 @@ namespace MC2017
                 canvas.Height += unit.Height;
             }
 
-            program_state = state.None;
-            btn_class.IsEnabled = true;
-            btn_generalization.IsEnabled = true;
-            btn_realization.IsEnabled = true;
-            btn_association.IsEnabled = true;
-            btn_dependancy.IsEnabled = true;
+            reset_btn();
         }
 
         public void draw_Unit_Line(LineUnit_GUI unit)
         {
             canvas.Children.Add(unit);
 
-            program_state = state.None;
-            btn_class.IsEnabled = true;
-            btn_generalization.IsEnabled = true;
-            btn_realization.IsEnabled = true;
-            btn_association.IsEnabled = true;
-            btn_dependancy.IsEnabled = true;
+            reset_btn();
 
         }
 
 
+        public void lineToBoundCheck() {
 
+            double x = Canvas.GetLeft(current_class);
+            double y = Canvas.GetTop(current_class);
 
+            if (current_line.p_from.X < x && current_line.p_to.X > x)
+            {
+                current_line.setToCoordinate(x - 5, current_line.p_to.Y);
+                current_line.setToOffset(current_line.p_to.X - x, current_line.p_to.Y - y);
+            }
+            else if (current_line.p_from.X > x + current_class.Width && current_line.p_to.X < x + current_class.Width)
+            {
+                current_line.setToCoordinate(x + current_class.Width + 5, current_line.p_to.Y);
+                current_line.setToOffset(current_line.p_to.X - x, current_line.p_to.Y - y);
+            }
+            else if (current_line.p_from.Y < y && current_line.p_to.Y > y)
+            {
+                current_line.setToCoordinate(current_line.p_to.X, y - 5);
+                current_line.setToOffset(current_line.p_to.X - x, current_line.p_to.Y - y);
+            }
+            else if (current_line.p_from.Y > y + current_class.Height && current_line.p_to.Y < y + current_class.Height)
+            {
+                current_line.setToCoordinate(current_line.p_to.X, y + current_class.Height + 5);
+                current_line.setToOffset(current_line.p_to.X - x, current_line.p_to.Y - y);
+            }
 
+        }
+
+        public void lineFromBoundCheck()
+        {
+
+            double x = Canvas.GetLeft(current_class);
+            double y = Canvas.GetTop(current_class);
+
+            if (current_line.p_to.X < x && current_line.p_from.X > x)
+            {
+                current_line.setFromCoordinate(x - 5, current_line.p_from.Y);
+                current_line.setFromOffset(current_line.p_from.X - x, current_line.p_from.Y - y);
+            }
+            else if (current_line.p_to.X > x + current_class.Width && current_line.p_from.X < x + current_class.Width)
+            {
+                current_line.setFromCoordinate(x + current_class.Width + 5, current_line.p_from.Y);
+                current_line.setFromOffset(current_line.p_from.X - x, current_line.p_from.Y - y);
+            }
+            else if (current_line.p_to.Y < y && current_line.p_from.Y > y)
+            {
+                current_line.setFromCoordinate(current_line.p_from.X, y - 5);
+                current_line.setFromOffset(current_line.p_from.X - x, current_line.p_from.Y - y);
+            }
+            else if (current_line.p_to.Y > y + current_class.Height && current_line.p_from.Y < y + current_class.Height)
+            {
+                current_line.setFromCoordinate(current_line.p_from.X, y + current_class.Height + 5);
+                current_line.setFromOffset(current_line.p_from.X - x, current_line.p_from.Y - y);
+            }
+
+        }
 
 
 
@@ -212,13 +341,11 @@ namespace MC2017
                 btn_dependancy.IsEnabled = false;
 
             }
-            else {
-                program_state = state.None;
-
-                btn_generalization.IsEnabled = true;
-                btn_realization.IsEnabled = true;
-                btn_association.IsEnabled = true;
-                btn_dependancy.IsEnabled = true;
+            else
+            {
+                reset_btn();
+                current_line = null;
+                current_class = null;
             }
 
         }
@@ -238,12 +365,9 @@ namespace MC2017
             }
             else
             {
-                program_state = state.None;
-
-                btn_class.IsEnabled = true;
-                btn_realization.IsEnabled = true;
-                btn_association.IsEnabled = true;
-                btn_dependancy.IsEnabled = true;
+                reset_btn();
+                current_line = null;
+                current_class = null;
             }
         }
 
@@ -262,12 +386,9 @@ namespace MC2017
             }
             else
             {
-                program_state = state.None;
-
-                btn_class.IsEnabled = true;
-                btn_generalization.IsEnabled = true;
-                btn_association.IsEnabled = true;
-                btn_dependancy.IsEnabled = true;
+                reset_btn();
+                current_line = null;
+                current_class = null;
             }
         }
 
@@ -286,12 +407,9 @@ namespace MC2017
             }
             else
             {
-                program_state = state.None;
-
-                btn_class.IsEnabled = true;
-                btn_generalization.IsEnabled = true;
-                btn_realization.IsEnabled = true;
-                btn_dependancy.IsEnabled = true;
+                reset_btn();
+                current_line = null;
+                current_class = null;
             }
         }
 
@@ -310,12 +428,9 @@ namespace MC2017
             }
             else
             {
-                program_state = state.None;
-
-                btn_class.IsEnabled = true;
-                btn_generalization.IsEnabled = true;
-                btn_realization.IsEnabled = true;
-                btn_association.IsEnabled = true;
+                reset_btn();
+                current_line = null;
+                current_class = null;
             }
         }
     }

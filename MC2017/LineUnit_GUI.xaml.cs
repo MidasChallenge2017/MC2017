@@ -35,9 +35,11 @@ namespace MC2017
         public ClassUnit_GUI to { get; set; }
         public line_Type type { get; set; }
 
-        Point p_from;
-        Point p_to;
+        public Point p_from;
+        public Point p_to;
         
+        public double tmp_from_X, tmp_from_Y;
+        public double tmp_to_X, tmp_to_Y;
 
         public LineUnit_GUI(Point p1, Point p2, ClassUnit_GUI from = null, ClassUnit_GUI to = null, line_Type type = line_Type.GENERALIZATION)
         {
@@ -59,13 +61,14 @@ namespace MC2017
             line.MouseLeftButtonUp += new MouseButtonEventHandler(mouse_up);
 
             polygon.MouseLeftButtonDown += new MouseButtonEventHandler(mouse_down_to);
+            polyline.MouseLeftButtonDown += new MouseButtonEventHandler(mouse_down_to);
 
         }
 
         private void mouse_down_to(object sender, MouseButtonEventArgs e)
         {
             Point p = e.MouseDevice.GetPosition(this);
-            int offset = 10;
+            int offset = 20;
 
             if (p.X < p_to.X + offset && p.X > p_to.X - offset && p.Y < p_to.Y + offset && p.Y > p_to.Y - offset)
             {
@@ -77,7 +80,7 @@ namespace MC2017
         private void mouse_down(object sender, MouseButtonEventArgs e)
         {
             Point p = e.MouseDevice.GetPosition(this);
-            int offset = 10;
+            int offset = 20;
 
             if (p.X < p_from.X + offset && p.X > p_from.X - offset && p.Y < p_from.Y + offset && p.Y > p_from.Y - offset)
             {
@@ -87,7 +90,10 @@ namespace MC2017
         }
 
         private void mouse_up(object sender, MouseButtonEventArgs e)
-        { }
+        {
+
+
+        }
 
         private void mouse_move(object sender, MouseEventArgs e)
         {
@@ -149,6 +155,18 @@ namespace MC2017
             polygon.Points = pc;
             polyline.Points = pc;
 
+        }
+
+        public void setFromOffset(double x, double y)
+        {
+            tmp_from_X = x;
+            tmp_from_Y = y;
+        }
+
+        public void setToOffset(double x, double y)
+        {
+            tmp_to_X = x;
+            tmp_to_Y = y;
         }
 
         public void setFromCoordinate(double X, double Y)
