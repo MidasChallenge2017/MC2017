@@ -45,5 +45,17 @@ namespace MC2017
                 MainWindow.program_state = MainWindow.state.ClassMove;
             }
         }
+        
+        public void writeAttribute()
+        {
+            name.Content = unit.name;
+            type.Content = unit.type;
+
+            foreach(Unit_Value i in unit.val)
+                list_val.Items.Add(i.str_Print);
+
+            foreach (Unit_Method i in unit.method)
+                list_method.Items.Add(i.str_Print);
+        }
     }
 }

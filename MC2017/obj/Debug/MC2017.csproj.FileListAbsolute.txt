@@ -13,16 +13,9 @@ C:\Users\HyeJeong\Documents\CHJ\2017\MIDAS challenge\Test1\MC2017\MC2017\obj\Deb
 C:\Users\HyeJeong\Documents\CHJ\2017\MIDAS challenge\Test1\MC2017\MC2017\obj\Debug\MC2017.csproj.GenerateResource.Cache
 C:\Users\HyeJeong\Documents\CHJ\2017\MIDAS challenge\Test1\MC2017\MC2017\obj\Debug\MC2017.exe
 C:\Users\HyeJeong\Documents\CHJ\2017\MIDAS challenge\Test1\MC2017\MC2017\obj\Debug\MC2017.pdb
-<<<<<<< HEAD
-C:\Users\HyeJeong\Documents\CHJ\2017\MIDAS challenge\Test1\MC2017\MC2017\obj\Debug\ClassUnit_GUI.g.cs
-C:\Users\HyeJeong\Documents\CHJ\2017\MIDAS challenge\Test1\MC2017\MC2017\obj\Debug\ClassUnit_GUI.baml
-C:\Users\HyeJeong\Documents\CHJ\2017\MIDAS challenge\Test1\MC2017\MC2017\obj\Debug\LineUnit_GUI.g.cs
-C:\Users\HyeJeong\Documents\CHJ\2017\MIDAS challenge\Test1\MC2017\MC2017\obj\Debug\LineUnit_GUI.baml
-=======
 D:\midas_Project\MC2017\bin\Debug\MC2017.exe.config
 D:\midas_Project\MC2017\obj\Debug\MC2017.exe
 D:\midas_Project\MC2017\obj\Debug\MC2017.pdb
->>>>>>> 0cd915deff9b9e7becca48a0ab57819770f8cc0c
 D:\midas_challenge\MC2017\bin\Debug\MC2017.exe.config
 D:\midas_challenge\MC2017\obj\Debug\MC2017.exe
 D:\midas_challenge\MC2017\obj\Debug\MC2017.pdb

@@ -21,11 +21,14 @@ namespace MC2017
     public partial class MethodUnit_GUI : UserControl
     {
 
-        Unit_Class unit;
+        public Unit_Class unit;
         public MethodUnit_GUI(Unit_Class unit)
         {
             InitializeComponent();
             this.unit = unit;
+            accessModifier.Items.Add("PUBLIC");
+            accessModifier.Items.Add("PRIVATE");
+            accessModifier.Items.Add("PROTECTED");
         }
 
         private void create_Click(object sender, RoutedEventArgs e)
@@ -40,16 +43,16 @@ namespace MC2017
             switch (accessModifier.SelectedIndex)
             {
                 case 0:
-                    methodAccessModifier = Unit_Method.access_Modifier.PRIVATE;
-                    break;
-                case 1:
                     methodAccessModifier = Unit_Method.access_Modifier.PUBLIC;
                     break;
-                case 2:
+                case 1:
                     methodAccessModifier = Unit_Method.access_Modifier.PRIVATE;
                     break;
-                case 3:
+                case 2:
                     methodAccessModifier = Unit_Method.access_Modifier.PROTECTED;
+                    break;
+                default:
+                    methodAccessModifier = Unit_Method.access_Modifier.PRIVATE;
                     break;
             }
             Unit_Method method = new Unit_Method(methodName, methodType,methodParam, methodAccessModifier, methodStatic, methodFinal);

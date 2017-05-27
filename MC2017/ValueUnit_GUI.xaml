@@ -8,8 +8,8 @@
              d:DesignHeight="300" d:DesignWidth="300" Width="215" Height="45">
     <Grid x:Name="valFormGrid" Width="215" Height="45">
         <ComboBox x:Name="accessModifier" HorizontalAlignment="Left" VerticalAlignment="Top" Width="72"/>
-        <TextBox x:Name="type" HorizontalAlignment="Left" Height="23" Margin="77,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="47"/>
-        <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="129,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="85"/>
+        <TextBox x:Name="type" HorizontalAlignment="Left" Height="23" Margin="77,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47"/>
+        <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="129,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85"/>
         <RadioButton x:Name="checkStatic" Content="static" HorizontalAlignment="Left" Margin="0,27,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="checkFinal" Content="final" HorizontalAlignment="Left" Margin="56,27,0,0" VerticalAlignment="Top"/>
         <Button x:Name="create" Content="생성" HorizontalAlignment="Left" Margin="179,24,0,0" VerticalAlignment="Top" Width="35" Click="create_Click"/>

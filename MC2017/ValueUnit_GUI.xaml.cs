@@ -21,12 +21,16 @@ namespace MC2017
     /// 
     public partial class UserControl1 : UserControl
     {
-        Unit_Class unit;
+        public Unit_Class unit;
 
         public UserControl1(Unit_Class unit)
         {
             InitializeComponent();
             this.unit = unit;
+            accessModifier.Items.Add("PUBLIC");
+            accessModifier.Items.Add("PRIVATE");
+            accessModifier.Items.Add("PROTECTED");
+
         }
 
         private void create_Click(object sender, RoutedEventArgs e)
@@ -40,16 +44,16 @@ namespace MC2017
             switch (accessModifier.SelectedIndex)
             {
                 case 0:
-                    valAccessModifier = Unit_Value.access_Modifier.PRIVATE;
-                    break;
-                case 1:
                     valAccessModifier = Unit_Value.access_Modifier.PUBLIC;
                     break;
-                case 2:
+                case 1:
                     valAccessModifier = Unit_Value.access_Modifier.PRIVATE;
                     break;
-                case 3:
+                case 2:
                     valAccessModifier = Unit_Value.access_Modifier.PROTECTED;
+                    break;
+                default:
+                    valAccessModifier = Unit_Value.access_Modifier.PRIVATE;
                     break;
             }
             Unit_Value val = new Unit_Value(valName, valType, valAccessModifier, valStatic, valFinal);
