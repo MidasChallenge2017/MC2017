@@ -44,3 +44,7 @@ D:\midas_challenge\MC2017\obj\Debug\MethodUnit_GUI.baml
 D:\midas_challenge\MC2017\obj\Debug\ValueUnit_GUI.baml
 D:\midas_challenge\MC2017\obj\Debug\ClassData_GUI.g.cs
 D:\midas_challenge\MC2017\obj\Debug\ClassData_GUI.baml
+D:\midas_challenge\MC2017\obj\Debug\DeleteValue.g.cs
+D:\midas_challenge\MC2017\obj\Debug\DeleteMethod.g.cs
+D:\midas_challenge\MC2017\obj\Debug\DeleteValue.baml
+D:\midas_challenge\MC2017\obj\Debug\DeleteMethod.baml

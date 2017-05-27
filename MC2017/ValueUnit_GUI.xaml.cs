@@ -58,6 +58,7 @@ namespace MC2017
             }
             Unit_Value val = new Unit_Value(valName, valType, valAccessModifier, valStatic, valFinal);
             unit.add_Unit_Value(val);
+            
         }
     }
 }

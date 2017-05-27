@@ -59,11 +59,17 @@
     <Compile Include="ClassData_GUI.xaml.cs">
       <DependentUpon>ClassData_GUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DeleteValue.xaml.cs">
+      <DependentUpon>DeleteValue.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Draw.cs" />
     <Compile Include="LineUnit_GUI.xaml.cs">
       <DependentUpon>LineUnit_GUI.xaml</DependentUpon>
     </Compile>
     <Compile Include="Load.cs" />
+    <Compile Include="DeleteMethod.xaml.cs">
+      <DependentUpon>DeleteMethod.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MethodUnit_GUI.xaml.cs">
       <DependentUpon>MethodUnit_GUI.xaml</DependentUpon>
     </Compile>
@@ -79,6 +85,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ClassUnit_GUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeleteValue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -101,6 +111,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="DeleteMethod.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MethodUnit_GUI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

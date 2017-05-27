@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\midas_challenge\MC2017\App.xaml
-6665720309
+81027571631
 
-20964795048
+22-2146770778
 14-1787462521
-ClassData_GUI.xaml;ClassUnit_GUI.xaml;LineUnit_GUI.xaml;MainWindow.xaml;MethodUnit_GUI.xaml;ValueUnit_GUI.xaml;
+ClassData_GUI.xaml;ClassUnit_GUI.xaml;DeleteValue.xaml;LineUnit_GUI.xaml;MainWindow.xaml;DeleteMethod.xaml;MethodUnit_GUI.xaml;ValueUnit_GUI.xaml;
 
-True
+False
 

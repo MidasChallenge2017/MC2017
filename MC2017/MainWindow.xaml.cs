@@ -22,7 +22,6 @@ namespace MC2017
     /// commit test
     public partial class MainWindow : Window
     {
-
         public enum state
         {
             None,
@@ -41,8 +40,7 @@ namespace MC2017
         public List<ClassUnit_GUI> list_class;
         public static ClassUnit_GUI current_class;
         public static LineUnit_GUI current_line;
-
-
+        
         LineUnit_GUI line;
 
         public MainWindow()
@@ -55,15 +53,9 @@ namespace MC2017
             canvas.MouseLeftButtonDown += new MouseButtonEventHandler(canvas_mouse_leftBtnDown);
             canvas.MouseMove += new MouseEventHandler(canvas_mouse_move);
             canvas.MouseLeftButtonUp += new MouseButtonEventHandler(canvas_mouse_leftBtnUp);
-
         }
-
-
-
         private void canvas_mouse_leftBtnDown(object sender, MouseButtonEventArgs e)
         {
-
-
         }
 
         private void canvas_mouse_leftBtnUp(object sender, MouseButtonEventArgs e)
@@ -159,13 +151,10 @@ namespace MC2017
             
             if (program_state == state.ClassMove)
             {
-
                 if (e.MouseDevice.LeftButton == MouseButtonState.Pressed && current_class != null)
                 {
-
                     Canvas.SetLeft(current_class, currentPosition.X);
                     Canvas.SetTop(current_class, currentPosition.Y);
-
                 }
             }
             else if (program_state == state.LineFrom)
@@ -173,7 +162,6 @@ namespace MC2017
                 if (e.MouseDevice.LeftButton == MouseButtonState.Pressed && current_line != null)
                 {
                     line.setFromCoordinate(currentPosition.X, currentPosition.Y);
-
                 }
             }
             else if (program_state == state.LineTo)
@@ -181,11 +169,8 @@ namespace MC2017
                 if (e.MouseDevice.LeftButton == MouseButtonState.Pressed && current_line != null)
                 {
                     line.setToCoordinate(currentPosition.X, currentPosition.Y);
-
                 }
             }
-
-
         }
         private void btn_class_Click(object sender, RoutedEventArgs e)
         {
@@ -197,7 +182,6 @@ namespace MC2017
                 btn_realization.IsEnabled = false;
                 btn_association.IsEnabled = false;
                 btn_dependancy.IsEnabled = false;
-
             }
             else
             {
@@ -208,21 +192,18 @@ namespace MC2017
                 btn_association.IsEnabled = true;
                 btn_dependancy.IsEnabled = true;
             }
-
         }
 
         private void btn_generalization_Click(object sender, RoutedEventArgs e)
         {
             if (program_state == state.None)
             {
-
                 program_state = state.Generaization;
 
                 btn_class.IsEnabled = false;
                 btn_realization.IsEnabled = false;
                 btn_association.IsEnabled = false;
                 btn_dependancy.IsEnabled = false;
-
             }
             else
             {
@@ -239,14 +220,12 @@ namespace MC2017
         {
             if (program_state == state.None)
             {
-
                 program_state = state.Realization;
 
                 btn_class.IsEnabled = false;
                 btn_generalization.IsEnabled = false;
                 btn_association.IsEnabled = false;
                 btn_dependancy.IsEnabled = false;
-
             }
             else
             {
@@ -263,14 +242,12 @@ namespace MC2017
         {
             if (program_state == state.None)
             {
-
                 program_state = state.Association;
 
                 btn_class.IsEnabled = false;
                 btn_generalization.IsEnabled = false;
                 btn_realization.IsEnabled = false;
                 btn_dependancy.IsEnabled = false;
-
             }
             else
             {
@@ -294,7 +271,6 @@ namespace MC2017
                 btn_generalization.IsEnabled = false;
                 btn_realization.IsEnabled = false;
                 btn_association.IsEnabled = false;
-
             }
             else
             {
@@ -355,6 +331,10 @@ namespace MC2017
         private void modifyValue_Click(object sender, RoutedEventArgs e)
         {
             classData.Children.Clear();
+            DeleteValue dd = new DeleteValue(current_class);
+
+            classData.Children.Add(dd);
+            /*
             int i = 0;
             UserControl1 valUnit = new UserControl1(current_class);
             Label emptyLable = new Label();
@@ -368,6 +348,7 @@ namespace MC2017
                 temp.Content = t.str_Print;
                 classData.Children.Insert(i++, temp);
             }
+            */
         }
 
         private void modifyMethod_Click(object sender, RoutedEventArgs e)
