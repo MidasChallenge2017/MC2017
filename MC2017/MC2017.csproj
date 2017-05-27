@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +61,12 @@
     <Compile Include="Unit_Line.cs" />
     <Compile Include="Unit_Method.cs" />
     <Compile Include="Unit_Value.cs" />
+    <Compile Include="Value_Unit_GUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Value_Unit_GUI.Designer.cs">
+      <DependentUpon>Value_Unit_GUI.cs</DependentUpon>
+    </Compile>
     <Page Include="ClassUnit_GUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -97,6 +104,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Value_Unit_GUI.resx">
+      <DependentUpon>Value_Unit_GUI.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

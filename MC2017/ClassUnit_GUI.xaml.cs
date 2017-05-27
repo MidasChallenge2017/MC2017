@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
+
 namespace MC2017
 {
     /// <summary>
@@ -22,7 +24,7 @@ namespace MC2017
     public partial class ClassUnit_GUI : UserControl
     {
 
-        private Unit_Class unit;
+        public Unit_Class unit;
 
         public ClassUnit_GUI(Unit_Class _unit)
         {
@@ -32,19 +34,11 @@ namespace MC2017
             list_val.ItemsSource = unit.val;
             list_method.ItemsSource = unit.method;
 
-
-
             Loaded += new RoutedEventHandler(loaded_eventHandler);
-
         }
 
         private void loaded_eventHandler(object sender, RoutedEventArgs e)
         {   
-        }
-
-        private void Class_Unit_Frame_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-
         }
     }
 }

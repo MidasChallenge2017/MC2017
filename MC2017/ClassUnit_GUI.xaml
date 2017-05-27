@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MC2017"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300" Width="200" Height="253" MouseLeftButtonUp="Class_Unit_Frame_MouseLeftButtonUp">
+             d:DesignHeight="300" d:DesignWidth="300" Width="200" Height="253">
 
 
     <StackPanel x:Name="panel"  Width="200" Height="Auto" Background="Black">

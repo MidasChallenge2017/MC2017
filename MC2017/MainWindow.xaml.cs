@@ -86,9 +86,9 @@ namespace MC2017
                 Canvas.SetLeft(unit, p.X);
                 Canvas.SetTop(unit, p.Y);
 
-                label1.Content = "X : " + (p.X + unit.ActualWidth) + "  " + canvas.Width;
-                label1.Content += "\nY : " + (p.Y + unit.ActualHeight) + "  " + canvas.Height;
-                label1.Content += "\nunit.height = " + unit.Height + "\nactualHeight = " + unit.ActualHeight;
+                label.Content = "X : " + (p.X + unit.ActualWidth) + "  " + canvas.Width;
+                label.Content += "\nY : " + (p.Y + unit.ActualHeight) + "  " + canvas.Height;
+                label.Content += "\nunit.height = " + unit.Height + "\nactualHeight = " + unit.ActualHeight;
 
                 if (p.X + unit.Width > canvas.Width) {
                     canvas.Width += unit.Width;
@@ -104,7 +104,6 @@ namespace MC2017
                 btn_realization.IsEnabled = true;
                 btn_association.IsEnabled = true;
                 btn_dependancy.IsEnabled = true;
-
             }
         }
 
