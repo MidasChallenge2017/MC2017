@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MC2017
 {
-    class Unit_Class
+    public class Unit_Class
     {
         public enum class_Type
         {
@@ -17,13 +17,13 @@ namespace MC2017
             ENUMERATION
         }
 
-        private string name { get; set; }
-        private class_Type type { get; set; }
+        public string name { get; set; }
+        public class_Type type { get; set; }
 
-        private List<Unit_Value> val;
-        private List<Unit_Method> method;
-        private List<Unit_Line> from; // i'm from!
-        private List<Unit_Line> to; // i'm to!
+        public List<Unit_Value> val;
+        public List<Unit_Method> method;
+        public List<Unit_Line> from; // i'm from!
+        public List<Unit_Line> to; // i'm to!
 
         public Unit_Class(String name = "none", class_Type type = class_Type.CLASS)
         {

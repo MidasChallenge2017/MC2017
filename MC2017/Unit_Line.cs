@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MC2017
 {
-    class Unit_Line
+    public class Unit_Line
     {
         public enum line_Type
         {
@@ -16,9 +16,9 @@ namespace MC2017
             ASSOCIATION
         };
 
-        private Unit_Class from { get; set; }
-        private Unit_Class to { get; set; }
-        private line_Type type { get; set; }
+        public Unit_Class from { get; set; }
+        public Unit_Class to { get; set; }
+        public line_Type type { get; set; }
 
         public Unit_Line(Unit_Class from = null, Unit_Class to = null, line_Type type = line_Type.GENERALIZATION)
         {
