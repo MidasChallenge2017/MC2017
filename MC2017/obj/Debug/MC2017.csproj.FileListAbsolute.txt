@@ -13,3 +13,6 @@ C:\Users\HyeJeong\Documents\CHJ\2017\MIDAS challenge\Test1\MC2017\MC2017\obj\Deb
 C:\Users\HyeJeong\Documents\CHJ\2017\MIDAS challenge\Test1\MC2017\MC2017\obj\Debug\MC2017.csproj.GenerateResource.Cache
 C:\Users\HyeJeong\Documents\CHJ\2017\MIDAS challenge\Test1\MC2017\MC2017\obj\Debug\MC2017.exe
 C:\Users\HyeJeong\Documents\CHJ\2017\MIDAS challenge\Test1\MC2017\MC2017\obj\Debug\MC2017.pdb
+D:\midas_Project\MC2017\bin\Debug\MC2017.exe.config
+D:\midas_Project\MC2017\obj\Debug\MC2017.exe
+D:\midas_Project\MC2017\obj\Debug\MC2017.pdb
