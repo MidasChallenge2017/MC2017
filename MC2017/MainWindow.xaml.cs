@@ -30,15 +30,20 @@ namespace MC2017
             Realization,
             Association,
             Dependancy,
-            ClassMove
+            ClassMove,
+            LineFrom,
+            LineTo
         }
 
         public static state program_state;
 
         public List<ClassUnit_GUI> list_class;
         public static ClassUnit_GUI current_class;
+        public static LineUnit_GUI current_line;
 
-        Line line;
+
+        LineUnit_GUI line;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -50,25 +55,14 @@ namespace MC2017
             canvas.MouseMove += new MouseEventHandler(canvas_mouse_move);
             canvas.MouseLeftButtonUp += new MouseButtonEventHandler(canvas_mouse_leftBtnUp);
 
-
-            line = new Line();
-            line.StrokeThickness = 4;
-            line.Stroke = System.Windows.Media.Brushes.Black;
-            line.X1 = 10;
-            line.X2 = 40;
-            line.Y1 = 70;
-            line.Y2 = 70;
-
-            canvas.Children.Add(line);
-            
         }
 
 
 
         private void canvas_mouse_leftBtnDown(object sender, MouseButtonEventArgs e)
         {
-            
-            
+
+
         }
 
         private void canvas_mouse_leftBtnUp(object sender, MouseButtonEventArgs e)
@@ -87,7 +81,16 @@ namespace MC2017
 
                 program_state = state.None;
             }
-            else if (program_state == state.None) {
+            else if (program_state == state.LineFrom)
+            {
+                program_state = state.None;
+            }
+            else if (program_state == state.LineTo)
+            {
+                program_state = state.None;
+            }
+            else if (program_state == state.None)
+            {
 
                 current_class = null;
             }
@@ -101,10 +104,6 @@ namespace MC2017
 
                 draw_Unit_Class(unit, p);
 
-                label1.Content = "X : " + (p.X + unit.ActualWidth) + "  " + canvas.Width;
-                label1.Content += "\nY : " + (p.Y + unit.ActualHeight) + "  " + canvas.Height;
-                label1.Content += "\nunit.height = " + unit.Height + "\nactualHeight = " + unit.ActualHeight;
-
             }
 
         }
@@ -112,26 +111,40 @@ namespace MC2017
         private void canvas_mouse_move(object sender, MouseEventArgs e)
         {
             Point currentPosition = e.GetPosition(canvas);
-            label.Content = "( "+ currentPosition.X + " , " + currentPosition.Y + " )";
+            label.Content = "( " + currentPosition.X + " , " + currentPosition.Y + " )";
             label1.Content = (current_class == null) ? "null" : "clicked";
 
 
-            if (program_state == state.ClassMove) {
+            if (program_state == state.ClassMove)
+            {
 
-                if (e.MouseDevice.LeftButton == MouseButtonState.Pressed && current_class != null) {
+                if (e.MouseDevice.LeftButton == MouseButtonState.Pressed && current_class != null)
+                {
 
                     Canvas.SetLeft(current_class, currentPosition.X);
                     Canvas.SetTop(current_class, currentPosition.Y);
 
-                    line.X2 = currentPosition.X;
-                    line.Y2 = currentPosition.Y;
+                }
+            }
+            else if (program_state == state.LineFrom)
+            {
+                if (e.MouseDevice.LeftButton == MouseButtonState.Pressed && current_line != null)
+                {
+                    line.setFromCoordinate(currentPosition.X, currentPosition.Y);
+
+                }
+            }
+            else if (program_state == state.LineTo)
+            {
+                if (e.MouseDevice.LeftButton == MouseButtonState.Pressed && current_line != null)
+                {
+                    line.setToCoordinate(currentPosition.X, currentPosition.Y);
 
                 }
             }
 
-            
-        }
 
+        }
         private void btn_class_Click(object sender, RoutedEventArgs e)
         {
             if (program_state == state.None)
@@ -144,7 +157,8 @@ namespace MC2017
                 btn_dependancy.IsEnabled = false;
 
             }
-            else {
+            else
+            {
                 program_state = state.None;
 
                 btn_generalization.IsEnabled = true;

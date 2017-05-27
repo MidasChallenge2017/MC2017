@@ -79,10 +79,10 @@ namespace MC2017
         }
         private void save_LineUnit_GUI(StreamWriter SW, LineUnit_GUI cur_data)
         {
-            SW.WriteLine(cur_data.X1);
-            SW.WriteLine(cur_data.Y1);
-            SW.WriteLine(cur_data.X2);
-            SW.WriteLine(cur_data.Y2);
+            SW.WriteLine(cur_data.p_from.X);
+            SW.WriteLine(cur_data.p_from.Y);
+            SW.WriteLine(cur_data.p_to.X);
+            SW.WriteLine(cur_data.p_to.Y);
             SW.WriteLine(cur_data.type);
         }
     }

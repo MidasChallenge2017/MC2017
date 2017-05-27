@@ -19,7 +19,14 @@ namespace MC2017
     {
         public void draw_Unit_Line(LineUnit_GUI unit)
         {
+            canvas.Children.Add(unit);
 
+            program_state = state.None;
+            btn_class.IsEnabled = true;
+            btn_generalization.IsEnabled = true;
+            btn_realization.IsEnabled = true;
+            btn_association.IsEnabled = true;
+            btn_dependancy.IsEnabled = true;
         }
         public void draw_Unit_Class(ClassUnit_GUI unit, Point p)
         {
@@ -39,6 +46,7 @@ namespace MC2017
             }
 
             program_state = state.None;
+            btn_class.IsEnabled = true;
             btn_generalization.IsEnabled = true;
             btn_realization.IsEnabled = true;
             btn_association.IsEnabled = true;
