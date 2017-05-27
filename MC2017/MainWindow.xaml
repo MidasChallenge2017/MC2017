@@ -18,14 +18,14 @@
             </MenuItem>
         </Menu>
 
-        <StackPanel HorizontalAlignment="Left" Height="30" Margin="0,30,0,0" VerticalAlignment="Top" Width="992" Background="#FFF0F0F0" Orientation="Horizontal">
+        <StackPanel x:Name="panel_btn" Height="30" Margin="0,30,0,0" VerticalAlignment="Top" Width="992" Background="#FFF0F0F0" Orientation="Horizontal">
             <Button x:Name="btn_class" Content="C" HorizontalAlignment="Left" Height="30"  Width="30" Margin="0,0,5,0" Click="btn_class_Click"/>
             <Button x:Name="btn_generalization" Content="G" HorizontalAlignment="Left" Height="30"  Width="30" Margin="0,0,5,0" Click="btn_generalization_Click"/>
             <Button x:Name="btn_realization" Content="R" HorizontalAlignment="Left" Height="30"  Width="30" Margin="0,0,5,0" Click="btn_realization_Click"/>
             <Button x:Name="btn_association" Content="A" HorizontalAlignment="Left" Height="30"  Width="30" Margin="0,0,5,0" Click="btn_association_Click"/>
             <Button x:Name="btn_dependancy" Content="D" HorizontalAlignment="Left" Height="30"  Width="30" Margin="0,0,5,0" Click="btn_dependancy_Click"/>
         </StackPanel>
-        <Grid HorizontalAlignment="Left" Height="599" Margin="761,60,0,0" VerticalAlignment="Top" Width="231" Background="#FFF0FCFF">
+        <Grid x:Name="rightPanel" Height="599" Margin="761,60,0,0" VerticalAlignment="Top" Width="231" Background="#FFF0FCFF">
             <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Height="33" Margin="27,57,0,0" VerticalAlignment="Top" Width="157"/>
             <Label x:Name="label1" Content="Label" HorizontalAlignment="Left" Height="102" Margin="27,111,0,0" VerticalAlignment="Top" Width="157"/>
         </Grid>

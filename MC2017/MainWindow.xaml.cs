@@ -40,7 +40,8 @@ namespace MC2017
         public List<ClassUnit_GUI> list_class;
         public static ClassUnit_GUI current_class;
         public static LineUnit_GUI current_line;
-        
+
+        double originalWidth, originalHeight;
 
         public MainWindow()
         {
@@ -52,10 +53,33 @@ namespace MC2017
             canvas.MouseLeftButtonDown += new MouseButtonEventHandler(canvas_mouse_leftBtnDown);
             canvas.MouseMove += new MouseEventHandler(canvas_mouse_move);
             canvas.MouseLeftButtonUp += new MouseButtonEventHandler(canvas_mouse_leftBtnUp);
-            
+
+            this.Loaded += new RoutedEventHandler(Window_Loaded);
+
+
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            originalWidth = this.Width;
+            originalHeight = this.Height;
+            this.SizeChanged += new SizeChangedEventHandler(size_changed);
+        }
 
+        private void size_changed(object sender, SizeChangedEventArgs e)
+        {
+            double newWidth = e.NewSize.Width;
+            double newHeight = e.NewSize.Height;
+
+            menu.Width = newWidth;
+            panel_btn.Width = newWidth;
+            
+            scrollViewer.Width = newWidth - rightPanel.Width;
+            scrollViewer.Height = newHeight - 100 ;
+
+            rightPanel.Margin = new Thickness(newWidth - rightPanel.Width, 60, 0, 0);
+            rightPanel.Height = newHeight - 100;
+        }
 
         private void canvas_mouse_leftBtnDown(object sender, MouseButtonEventArgs e)
         {
