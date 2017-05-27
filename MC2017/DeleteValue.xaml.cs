@@ -33,10 +33,16 @@ namespace MC2017
         
         private void AttributeList_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            int temp = AttributeList.SelectedIndex;
-            AttributeList.Items.Remove(unit.val[temp].str_Print);
-            AttributeList.Items.Refresh();
-            unit.delete_Unit_Value(unit.val[temp]);
+            try
+            {
+                int temp = AttributeList.SelectedIndex;
+                AttributeList.Items.Remove(unit.val[temp].str_Print);
+                AttributeList.Items.Refresh();
+                unit.delete_Unit_Value(unit.val[temp]);
+            }catch(Exception)
+            {
+                return;
+            }
 
             return;
 
