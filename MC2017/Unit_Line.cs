@@ -20,7 +20,7 @@ namespace MC2017
         private Unit_Class to;
         private line_Type type;
 
-        public Unit_Line(Unit_Class from, Unit_Class to, line_Type type)
+        public Unit_Line(Unit_Class from = null, Unit_Class to = null, line_Type type = line_Type.GENERALIZATION)
         {
             this.from = from;
             this.to = to;

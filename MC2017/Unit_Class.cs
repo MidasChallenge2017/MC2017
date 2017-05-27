@@ -25,10 +25,14 @@ namespace MC2017
         public List<Unit_Line> from;
         public List<Unit_Line> to;
 
-        public Unit_Class(String name, class_Type type)
+        public Unit_Class(String name = "none", class_Type type = class_Type.CLASS)
         {
             this.name = name;
             this.type = type;
+            val = new List<Unit_Value>();
+            method = new List<Unit_Method>();
+            from = new List<Unit_Line>();
+            to = new List<Unit_Line>();
         }
 
         public void delete_Class()
