@@ -22,7 +22,7 @@ namespace MC2017
     public partial class ClassUnit_GUI : UserControl
     {
 
-
+        Unit_Class unit;
 
 
         public ClassUnit_GUI()
