@@ -23,11 +23,11 @@ namespace MC2017
     {
         public enum class_Type
         {
-            NORMAL,
-            INTERFACE,
-            ABSTRACT,
-            UTILITY,
-            ENUMERATION
+            NORMAL = 1,
+            INTERFACE = 2,
+            ABSTRACT = 3,
+            UTILITY = 4,
+            ENUMERATION = 5
         }
 
         public string name { get; set; }
@@ -64,9 +64,8 @@ namespace MC2017
                 MainWindow.current_class = this;
                 MainWindow.program_state = MainWindow.state.ClassMove;
             }
+            writeAttribute();
         }
-
-        
 
         public void delete_Class()
         {
@@ -110,6 +109,19 @@ namespace MC2017
         public void delete_Unit_Method(Unit_Method method)
         {
             this.method.Remove(method);
+        }
+        public void writeAttribute()
+        {
+            label_name.Content = this.name;
+            label_type.Content = "<<"+this.type+">>";
+        }
+        public void see_val()
+        {
+            list_val.ItemsSource = val;
+        }
+        public void see_method()
+        {
+            list_method.ItemsSource = method;
         }
     }
 }

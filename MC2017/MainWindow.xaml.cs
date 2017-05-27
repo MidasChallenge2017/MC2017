@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.IO;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
@@ -68,7 +69,7 @@ namespace MC2017
         private void canvas_mouse_leftBtnUp(object sender, MouseButtonEventArgs e)
         {
             Point p = e.GetPosition(canvas);
-
+            classData.Children.Clear();
 
             if (program_state == state.ClassMove)
             {
@@ -94,7 +95,6 @@ namespace MC2017
             }
             else if (program_state == state.None)
             {
-                classData.Children.Clear();
                 current_class = null;
             }
             else if (program_state == state.Class)
@@ -115,32 +115,31 @@ namespace MC2017
             int i = 0;
             MethodUnit_GUI methodUnit = new MethodUnit_GUI(current_class);
             UserControl1 valUnit = new UserControl1(current_class);
+            ClassData_GUI classUnit = new ClassData_GUI(current_class);
 
-            Label className = new Label();
-            Label classType = new Label();
             Label emptyLable = new Label();
-
-            className.Content = current_class.name;
-            classType.Content = current_class.type;
+            
             emptyLable.Content = " ";
 
-            classData.Children.Insert(i++, classType);
-            classData.Children.Insert(i++, className);
+            classData.Children.Insert(i++, classUnit);
             classData.Children.Insert(i++, valUnit);
-            foreach (Unit_Value t in valUnit.unit.val)
+
+            /*foreach (Unit_Value t in valUnit.unit.val)
             {
                 Label temp = new Label();
                 temp.Content = t.str_Print;
                 classData.Children.Insert(i++, temp);
-            }
+            }*/
+
             classData.Children.Insert(i++, emptyLable);
             classData.Children.Insert(i++, methodUnit);
-            foreach (Unit_Method t in methodUnit.unit.method)
+            
+            /*foreach (Unit_Method t in methodUnit.unit.method)
             {
                 Label temp = new Label();
                 temp.Content = t.str_Print;
                 classData.Children.Insert(i++, temp);
-            }
+            }*/
         }
 
         private void canvas_mouse_move(object sender, MouseEventArgs e)
@@ -148,8 +147,7 @@ namespace MC2017
             Point currentPosition = e.GetPosition(canvas);
             label.Content = "( " + currentPosition.X + " , " + currentPosition.Y + " )";
             label1.Content = (current_class == null) ? "null" : "clicked";
-
-
+            
             if (program_state == state.ClassMove)
             {
 
@@ -304,6 +302,51 @@ namespace MC2017
         {
             classData.Children.Clear();
             getClass();
+        }
+
+        private void saveAsPNG_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.OpenFileDialog pFileDlg = new System.Windows.Forms.OpenFileDialog();
+            pFileDlg.Title = "선택하여 주세요.";
+            pFileDlg.CheckFileExists = false;
+            if (pFileDlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                String strFullPathFile = pFileDlg.FileName;
+                if (!strFullPathFile.EndsWith(".png"))
+                {
+                    strFullPathFile += ".png";
+                }
+                ExportToPng(strFullPathFile, canvas);
+            }
+        }
+        public void ExportToPng(string path, Canvas surface)
+        {
+            if (path == null) return;
+            
+            Transform transform = surface.LayoutTransform;
+            surface.LayoutTransform = null;
+            
+            Size size = new Size(surface.ActualWidth + 53, surface.ActualHeight + 10);
+            
+            surface.Measure(size);
+            surface.Arrange(new Rect(size));
+            
+            RenderTargetBitmap renderBitmap =
+              new RenderTargetBitmap(
+                (int)size.Width,
+                (int)size.Height,
+                96d,
+                96d,
+                PixelFormats.Pbgra32);
+            renderBitmap.Render(surface);
+            
+            using (FileStream outStream = new FileStream(path, FileMode.Create))
+            {
+                PngBitmapEncoder encoder = new PngBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
+                encoder.Save(outStream);
+            }
+            surface.LayoutTransform = transform;
         }
     }
 }

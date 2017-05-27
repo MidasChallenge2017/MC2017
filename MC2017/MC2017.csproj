@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClassData_GUI.xaml.cs">
+      <DependentUpon>ClassData_GUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Draw.cs" />
     <Compile Include="LineUnit_GUI.xaml.cs">
       <DependentUpon>LineUnit_GUI.xaml</DependentUpon>
@@ -70,6 +73,10 @@
     <Compile Include="ValueUnit_GUI.xaml.cs">
       <DependentUpon>ValueUnit_GUI.xaml</DependentUpon>
     </Compile>
+    <Page Include="ClassData_GUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ClassUnit_GUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

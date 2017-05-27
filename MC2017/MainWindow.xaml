@@ -11,6 +11,7 @@
             <MenuItem Header="File" Height="27">
                 <MenuItem Header="New" HorizontalAlignment="Left" Width="141"/>
                 <MenuItem Header="Save" HorizontalAlignment="Left" Width="141"/>
+                <MenuItem Header="Save As PNG" HorizontalAlignment="Left" Width="164" Margin="0,0,-23,0"/>
                 <MenuItem Header="Load" HorizontalAlignment="Left" Width="141"/>
             </MenuItem>
             <MenuItem Header="Edit"/>
