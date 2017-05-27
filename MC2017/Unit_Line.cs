@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MC2017
 {
-    class Unit_Line
+    public class Unit_Line
     {
         public enum line_Type
         {

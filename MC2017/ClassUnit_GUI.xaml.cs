@@ -22,14 +22,23 @@ namespace MC2017
     public partial class ClassUnit_GUI : UserControl
     {
 
-        Unit_Class unit;
+        private Unit_Class unit;
 
-
-        public ClassUnit_GUI()
+        public ClassUnit_GUI(Unit_Class _unit)
         {
             InitializeComponent();
 
+            unit = _unit;
             panel.Height = name.Height + type.Height + list_method.Height + list_value.Height;
+
+
+            Loaded += new RoutedEventHandler(loaded_eventHandler);
+
         }
+
+        private void loaded_eventHandler(object sender, RoutedEventArgs e)
+        {   
+        }
+
     }
 }

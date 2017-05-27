@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MC2017
 {
-    class Unit_Class
+    public class Unit_Class
     {
         public enum class_Type
         {

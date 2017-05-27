@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MC2017
 {
-    class Unit_Value
+    public class Unit_Value
     {
         public enum access_Modifier
         {

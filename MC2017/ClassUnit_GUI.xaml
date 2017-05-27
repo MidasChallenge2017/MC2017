@@ -6,10 +6,16 @@
              xmlns:local="clr-namespace:MC2017"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Width="230">
-    <StackPanel x:Name="panel"  Width="230" Background="#FFB4EEFF">
+
+
+
+
+    <StackPanel x:Name="panel"  Width="Auto" Height="Auto" Background="#FFB4EEFF">
         <Label x:Name="type" Content="Stereo Type" HorizontalAlignment="Left" Width="230" Background="#FF66DCFF" HorizontalContentAlignment="Center" FontSize="11"/>
         <Label x:Name="name" Content="Name" HorizontalAlignment="Left" Height="26" Width="230" Background="#FF66DCFF" FontWeight="Bold" HorizontalContentAlignment="Center"/>
         <ListBox x:Name="list_value" HorizontalAlignment="Left" Height="23" Width="230" Background="{x:Null}"/>
         <ListBox x:Name="list_method" HorizontalAlignment="Left" Height="23" Width="230" Background="{x:Null}"/>
     </StackPanel>
+    
+    
 </UserControl>
