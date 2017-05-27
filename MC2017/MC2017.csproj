@@ -57,6 +57,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MethodUnit_GUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MethodUnit_GUI.Designer.cs">
+      <DependentUpon>MethodUnit_GUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Unit_Class.cs" />
     <Compile Include="Unit_Line.cs" />
     <Compile Include="Unit_Method.cs" />
@@ -101,6 +107,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="MethodUnit_GUI.resx">
+      <DependentUpon>MethodUnit_GUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
