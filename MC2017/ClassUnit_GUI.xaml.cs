@@ -21,16 +21,30 @@ namespace MC2017
     
     public partial class ClassUnit_GUI : UserControl
     {
-        Unit_Class unit;
 
-        public ClassUnit_GUI()
+        private Unit_Class unit;
+
+        public ClassUnit_GUI(Unit_Class _unit)
         {
             InitializeComponent();
 
-            unit = new Unit_Class();
-
+            unit = _unit;
             list_val.ItemsSource = unit.val;
             list_method.ItemsSource = unit.method;
+
+
+
+            Loaded += new RoutedEventHandler(loaded_eventHandler);
+
+        }
+
+        private void loaded_eventHandler(object sender, RoutedEventArgs e)
+        {   
+        }
+
+        private void Class_Unit_Frame_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }
