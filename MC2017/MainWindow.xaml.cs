@@ -433,5 +433,16 @@ namespace MC2017
                 current_class = null;
             }
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            canvas_dialog dialog = new canvas_dialog((int)canvas.Width, (int)canvas.Height);
+            if (dialog.ShowDialog() == true) {
+                String[] strs = dialog.Answer.Split(' ');
+                canvas.Width = int.Parse(strs[0]);
+                canvas.Height = int.Parse(strs[1]);
+            }
+
+        }
     }
 }
