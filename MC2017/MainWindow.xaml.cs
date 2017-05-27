@@ -80,18 +80,21 @@ namespace MC2017
                     canvas.Height += current_class.Height;
 
                 program_state = state.None;
+                getClass();
             }
             else if (program_state == state.LineFrom)
             {
                 program_state = state.None;
+                getClass();
             }
             else if (program_state == state.LineTo)
             {
                 program_state = state.None;
+                getClass();
             }
             else if (program_state == state.None)
             {
-
+                classData.Children.Clear();
                 current_class = null;
             }
             else if (program_state == state.Class)
@@ -103,9 +106,41 @@ namespace MC2017
                 list_class.Add(unit);
 
                 draw_Unit_Class(unit, p);
-
+                getClass();
             }
+        }
 
+        public void getClass()
+        {
+            int i = 0;
+            MethodUnit_GUI methodUnit = new MethodUnit_GUI(current_class);
+            UserControl1 valUnit = new UserControl1(current_class);
+
+            Label className = new Label();
+            Label classType = new Label();
+            Label emptyLable = new Label();
+
+            className.Content = current_class.name;
+            classType.Content = current_class.type;
+            emptyLable.Content = " ";
+
+            classData.Children.Insert(i++, classType);
+            classData.Children.Insert(i++, className);
+            classData.Children.Insert(i++, valUnit);
+            foreach (Unit_Value t in valUnit.unit.val)
+            {
+                Label temp = new Label();
+                temp.Content = t.str_Print;
+                classData.Children.Insert(i++, temp);
+            }
+            classData.Children.Insert(i++, emptyLable);
+            classData.Children.Insert(i++, methodUnit);
+            foreach (Unit_Method t in methodUnit.unit.method)
+            {
+                Label temp = new Label();
+                temp.Content = t.str_Print;
+                classData.Children.Insert(i++, temp);
+            }
         }
 
         private void canvas_mouse_move(object sender, MouseEventArgs e)
@@ -263,6 +298,12 @@ namespace MC2017
                 btn_realization.IsEnabled = true;
                 btn_association.IsEnabled = true;
             }
+        }
+
+        private void classData_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            classData.Children.Clear();
+            getClass();
         }
     }
 }

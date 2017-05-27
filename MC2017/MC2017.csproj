@@ -55,11 +55,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Draw.cs" />
     <Compile Include="LineUnit_GUI.xaml.cs">
       <DependentUpon>LineUnit_GUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Load.cs" />
+    <Compile Include="MethodUnit_GUI.xaml.cs">
+      <DependentUpon>MethodUnit_GUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="New_Docu.cs" />
+    <Compile Include="Save.cs" />
     <Compile Include="Unit_Method.cs" />
     <Compile Include="Unit_Value.cs" />
+    <Compile Include="ValueUnit_GUI.xaml.cs">
+      <DependentUpon>ValueUnit_GUI.xaml</DependentUpon>
+    </Compile>
     <Page Include="ClassUnit_GUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -83,6 +93,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MethodUnit_GUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ValueUnit_GUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

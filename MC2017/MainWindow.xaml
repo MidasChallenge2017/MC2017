@@ -24,8 +24,9 @@
             <Button x:Name="btn_dependancy" Content="D" HorizontalAlignment="Left" Height="30"  Width="30" Margin="0,0,5,0" Click="btn_dependancy_Click"/>
         </StackPanel>
         <Grid HorizontalAlignment="Left" Height="599" Margin="761,60,0,0" VerticalAlignment="Top" Width="231" Background="#FFF0FCFF">
-            <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Height="33" Margin="27,57,0,0" VerticalAlignment="Top" Width="157"/>
-            <Label x:Name="label1" Content="Label" HorizontalAlignment="Left" Height="102" Margin="27,111,0,0" VerticalAlignment="Top" Width="157"/>
+            <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Height="33" Margin="27,525,0,0" VerticalAlignment="Top" Width="157"/>
+            <Label x:Name="label1" Content="Label" HorizontalAlignment="Left" Height="36" Margin="27,563,0,0" VerticalAlignment="Top" Width="157"/>
+            <StackPanel x:Name="classData" HorizontalAlignment="Left" Height="520" VerticalAlignment="Top" Width="231" MouseLeftButtonUp="classData_MouseLeftButtonUp"/>
         </Grid>
 
         <ScrollViewer x:Name="scrollViewer" HorizontalAlignment="Left" Height="599" Margin="0,60,0,0" VerticalAlignment="Top" Width="761" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="#FFEAEAEA" >
